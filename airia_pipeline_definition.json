@@ -5,7 +5,7 @@
   "pipelineDefinition": {
     "available": true,
     "metadata": {
-      "id": "3426d836-9b73-478f-9f26-4746d4c97f99",
+      "id": "59dd60e6-4c8e-4572-b109-e60dd868f6b7",
       "exportVersion": "20260603123638_AddStatusToClaudeGuardrailEvaluations",
       "tagline": "Create AlayaCare client from MAC PDF",
       "agentDescription": "Upload MAC PDF to create client in AlayaCare UAT.",
@@ -13,43 +13,43 @@
       "tasks": "Client Intake",
       "credentialExportOption": "Placeholder",
       "dataSourceExportOption": "Placeholder",
-      "versionInformation": "1.08",
+      "versionInformation": "1.09",
       "state": "Preview",
       "readiness": "Template",
       "department": "Everyone"
     },
     "agent": {
-      "id": "3426d836-9b73-478f-9f26-4746d4c97f99",
-      "name": "Create AlayaCare Client from MAC PDF v8",
-      "executionName": "create_alayacare_client_from_mac_pdf_v8",
+      "id": "59dd60e6-4c8e-4572-b109-e60dd868f6b7",
+      "name": "Create AlayaCare Client from MAC PDF v9",
+      "executionName": "create_alayacare_client_from_mac_pdf_v9",
       "agentDescription": "Upload a MAC referral PDF to extract client details and create a client in AlayaCare UAT.",
       "alignment": "Vertical",
       "saveToolResponsesToHistory": true,
       "steps": [
         {
-          "id": "545d86f2-8968-4241-964a-f07b4f11cdc9",
+          "id": "e14fcf5f-c34f-43b0-a0b9-94dfaa9c88fb",
           "stepType": "inputStep",
           "stepTitle": "Input",
           "position": {"x": "48", "y": "12"},
           "handles": [
-            {"uuid": "5bc9cfaa-c9c8-4788-b563-4d3fb2453b59", "type": "source", "label": "", "tooltip": "", "x": 0, "y": 0}
+            {"uuid": "9036ad1d-c0e1-45ff-afb0-59ebcf66e04d", "type": "source", "label": "", "tooltip": "", "x": 0, "y": 0}
           ],
           "dependenciesObject": [],
           "preferredPdfParserId": "3b6d704c-3442-405b-afd4-d5dc64b6ea41"
         },
         {
-          "id": "f09dde38-cb15-4102-b94e-6f7d28fdf64f",
+          "id": "227323b4-be24-440d-a9f8-2c1707991c7a",
           "stepType": "AIOperation",
           "stepTitle": "Extract Client Data",
           "position": {"x": "12", "y": "171"},
           "handles": [
-            {"uuid": "02da07e0-b3aa-4844-95c7-588df4e320e1", "type": "target", "label": "", "tooltip": "", "x": 0, "y": 0},
-            {"uuid": "91b9d36f-0068-4b2e-bf84-bfbd74a7a43a", "type": "source", "label": "", "tooltip": "", "x": 0, "y": 0}
+            {"uuid": "3844299a-aa9e-4299-984c-e14a7c7db5bd", "type": "target", "label": "", "tooltip": "", "x": 0, "y": 0},
+            {"uuid": "be409592-6117-4181-b66d-19a82116ac10", "type": "source", "label": "", "tooltip": "", "x": 0, "y": 0}
           ],
           "dependenciesObject": [
-            {"parentId": "545d86f2-8968-4241-964a-f07b4f11cdc9", "parentHandleId": "5bc9cfaa-c9c8-4788-b563-4d3fb2453b59", "handleId": "02da07e0-b3aa-4844-95c7-588df4e320e1"}
+            {"parentId": "e14fcf5f-c34f-43b0-a0b9-94dfaa9c88fb", "parentHandleId": "9036ad1d-c0e1-45ff-afb0-59ebcf66e04d", "handleId": "3844299a-aa9e-4299-984c-e14a7c7db5bd"}
           ],
-          "modelId": "fc3d947d-2096-4c5f-ac48-e91ef4e08151",
+          "modelId": "93ed82e3-8bc4-4301-b971-fbfb261cf264",
           "temperature": 0,
           "toolIds": [],
           "toolParamsJson": "{}",
@@ -62,35 +62,35 @@
           "selectedDataSources": []
         },
         {
-          "id": "4e22185c-c3a8-4bce-955b-a24f402d5a50",
+          "id": "3b952554-c0a5-4a4b-90d4-74180124ed93",
           "stepType": "approvalStep",
           "stepTitle": "Confirm Details",
           "position": {"x": "12", "y": "350"},
           "handles": [
-            {"uuid": "8497f4ab-1a7f-4aee-b1e0-b95339e8759c", "type": "target", "label": "", "tooltip": "", "x": 0, "y": 0},
-            {"uuid": "3da70a44-72d0-43d4-978e-fd1735ffeaf6", "type": "source", "label": "Approved", "tooltip": "", "x": 0, "y": 0},
-            {"uuid": "fc984f62-79d5-4a34-b764-f712fc88f117", "type": "source", "label": "Denied", "tooltip": "", "x": 0, "y": 0}
+            {"uuid": "5cc39e26-f1fb-48ef-a899-3a03c80b9c92", "type": "target", "label": "", "tooltip": "", "x": 0, "y": 0},
+            {"uuid": "0bd62be0-974b-400b-a7b8-b03908707c20", "type": "source", "label": "Approved", "tooltip": "", "x": 0, "y": 0},
+            {"uuid": "79f13e5c-e11d-4831-8c55-7b8568c6c49b", "type": "source", "label": "Denied", "tooltip": "", "x": 0, "y": 0}
           ],
           "dependenciesObject": [
-            {"parentId": "f09dde38-cb15-4102-b94e-6f7d28fdf64f", "parentHandleId": "91b9d36f-0068-4b2e-bf84-bfbd74a7a43a", "handleId": "8497f4ab-1a7f-4aee-b1e0-b95339e8759c"}
+            {"parentId": "227323b4-be24-440d-a9f8-2c1707991c7a", "parentHandleId": "be409592-6117-4181-b66d-19a82116ac10", "handleId": "5cc39e26-f1fb-48ef-a899-3a03c80b9c92"}
           ],
-          "approvalRequestId": "ff14c758-601b-41c4-b288-71b8855f83d3"
+          "approvalRequestId": "2cab5a9e-f629-452e-a51f-9e689892c537"
         },
         {
-          "id": "9b258a0e-dfde-4478-a15b-76515ff398dc",
+          "id": "adcf55fb-b075-4a0f-9a37-f564b14bddea",
           "stepType": "AIOperation",
           "stepTitle": "Create AlayaCare Client",
           "position": {"x": "12", "y": "530"},
           "handles": [
-            {"uuid": "df668c65-56ad-4fbe-8065-ef89930c0761", "type": "target", "label": "", "tooltip": "", "x": 0, "y": 0},
-            {"uuid": "d559667e-c764-4b82-8ca9-aead11aaa967", "type": "source", "label": "", "tooltip": "", "x": 0, "y": 0}
+            {"uuid": "f830bc78-3564-4f82-bad8-32e2ca79e042", "type": "target", "label": "", "tooltip": "", "x": 0, "y": 0},
+            {"uuid": "dcecb43f-63bf-4fb7-aaa7-50f77f7fbfb8", "type": "source", "label": "", "tooltip": "", "x": 0, "y": 0}
           ],
           "dependenciesObject": [
-            {"parentId": "4e22185c-c3a8-4bce-955b-a24f402d5a50", "parentHandleId": "3da70a44-72d0-43d4-978e-fd1735ffeaf6", "handleId": "df668c65-56ad-4fbe-8065-ef89930c0761"}
+            {"parentId": "3b952554-c0a5-4a4b-90d4-74180124ed93", "parentHandleId": "0bd62be0-974b-400b-a7b8-b03908707c20", "handleId": "f830bc78-3564-4f82-bad8-32e2ca79e042"}
           ],
-          "modelId": "cdad2404-8a62-4752-9209-5a8b8196a9db",
+          "modelId": "9afcdd80-92cd-45ea-a81d-ad58487e81c2",
           "temperature": 0,
-          "toolIds": ["503cc624-ee64-411f-b95b-8bde9b32d82b", "48d057a1-ecb2-49cf-b5f2-1221e7e950a6", "a9522d91-caec-4e13-9fe2-fb47fad357c5"],
+          "toolIds": ["4ce508fb-69a1-4dc9-9052-dde9550f7d1e", "b3a65283-2480-4e67-8211-a27eb910a1fa", "7d981cd7-b006-4e01-99fb-4504c0a83b29"],
           "toolParamsJson": "{}",
           "includeDateTimeContext": false,
           "includeUserDetailsContext": false,
@@ -101,43 +101,43 @@
           "selectedDataSources": []
         },
         {
-          "id": "9384fdd1-14cc-4787-9fa3-1c8575284361",
+          "id": "f9bbccff-d2c4-421b-a612-83dff52f3033",
           "stepType": "outputStep",
           "stepTitle": "Output",
           "position": {"x": "72", "y": "710"},
           "handles": [
-            {"uuid": "79b91b03-9467-4be2-a153-23f3e370b027", "type": "target", "label": "", "tooltip": "", "x": 0, "y": 0}
+            {"uuid": "00c702f1-8d73-4801-aa32-38b44fb8c951", "type": "target", "label": "", "tooltip": "", "x": 0, "y": 0}
           ],
           "dependenciesObject": [
-            {"parentId": "9b258a0e-dfde-4478-a15b-76515ff398dc", "parentHandleId": "d559667e-c764-4b82-8ca9-aead11aaa967", "handleId": "79b91b03-9467-4be2-a153-23f3e370b027"}
+            {"parentId": "adcf55fb-b075-4a0f-9a37-f564b14bddea", "parentHandleId": "dcecb43f-63bf-4fb7-aaa7-50f77f7fbfb8", "handleId": "00c702f1-8d73-4801-aa32-38b44fb8c951"}
           ]
         },
         {
-          "id": "69c1e66a-48c1-4883-8678-39f0960706e6",
+          "id": "2e58b941-d28b-4f39-8a04-bd26060aa9b4",
           "stepType": "outputStep",
           "stepTitle": "Cancelled",
           "position": {"x": "300", "y": "530"},
           "handles": [
-            {"uuid": "2cf38983-0c39-4528-a9f9-e23fedcef21c", "type": "target", "label": "", "tooltip": "", "x": 0, "y": 0}
+            {"uuid": "a994ce84-0054-4aa5-a01e-4e9365e8adf3", "type": "target", "label": "", "tooltip": "", "x": 0, "y": 0}
           ],
           "dependenciesObject": [
-            {"parentId": "4e22185c-c3a8-4bce-955b-a24f402d5a50", "parentHandleId": "fc984f62-79d5-4a34-b764-f712fc88f117", "handleId": "2cf38983-0c39-4528-a9f9-e23fedcef21c"}
+            {"parentId": "3b952554-c0a5-4a4b-90d4-74180124ed93", "parentHandleId": "79f13e5c-e11d-4831-8c55-7b8568c6c49b", "handleId": "a994ce84-0054-4aa5-a01e-4e9365e8adf3"}
           ]
         }
       ]
     },
     "tools": [
       {
-        "id": "503cc624-ee64-411f-b95b-8bde9b32d82b",
+        "id": "4ce508fb-69a1-4dc9-9052-dde9550f7d1e",
         "toolType": "custom",
-        "name": "alayacare_create_client_v8",
-        "standardizedName": "alayacare_create_client_v8",
-        "toolDescription": "Creates a new client in AlayaCare UAT. Returns JSON with integer 'id' field â€” use this as client_id for the other tools.",
-        "purpose": "Create AlayaCare client with basic demographics",
+        "name": "alayacare_create_client_v9",
+        "standardizedName": "alayacare_create_client_v9",
+        "toolDescription": "Creates a new AlayaCare client. Returns JSON with integer 'id' â€” use this as client_id for the other tools. Only pass name and gender here; all other fields go in alayacare_update_demographics_v9.",
+        "purpose": "Create AlayaCare client record â€” name and gender only",
         "apiEndpoint": "https://asa.uat.alayacare.com/ext/api/v2/patients/clients",
         "methodType": "POST",
         "bodyType": "Json",
-        "body": "{\"demographics\":{\"first_name\":\"{{first_name}}\",\"last_name\":\"{{last_name}}\",\"gender\":\"{{gender}}\"},\"language\":\"{{language}}\",\"timezone\":\"{{timezone}}\",\"correspondence_method\":\"{{correspondence_method}}\"}",
+        "body": "{\"demographics\":{\"first_name\":\"{{first_name}}\",\"last_name\":\"{{last_name}}\",\"gender\":\"{{gender}}\"}}",
         "headersDefinition": [
           {"key": "Authorization", "value": "Basic <YOUR_BASE64_ENCODED_ALAYACARE_CREDENTIALS>", "sensitive": true},
           {"key": "Content-Type", "value": "application/json", "sensitive": false}
@@ -147,25 +147,22 @@
         "routeThroughACC": false,
         "useUserCredentials": false,
         "parametersDefinition": [
-          {"name": "first_name",            "parameterType": "string", "parameterDescription": "Client first name",                         "default": "", "requirement": "Required"},
-          {"name": "last_name",             "parameterType": "string", "parameterDescription": "Client last name",                          "default": "", "requirement": "Required"},
-          {"name": "gender",                "parameterType": "string", "parameterDescription": "Gender code: M, F, or O",                   "default": "", "requirement": "Required"},
-          {"name": "language",              "parameterType": "string", "parameterDescription": "ISO 639-1 language code e.g. en",           "default": "", "requirement": "Required"},
-          {"name": "timezone",              "parameterType": "string", "parameterDescription": "IANA timezone e.g. Australia/Adelaide",     "default": "", "requirement": "Required"},
-          {"name": "correspondence_method", "parameterType": "string", "parameterDescription": "Preferred contact method: mail or email",   "default": "", "requirement": "Required"}
+          {"name": "first_name", "parameterType": "string", "parameterDescription": "Client first name",  "default": "", "requirement": "Required"},
+          {"name": "last_name",  "parameterType": "string", "parameterDescription": "Client last name",   "default": "", "requirement": "Required"},
+          {"name": "gender",     "parameterType": "string", "parameterDescription": "M, F, or O",         "default": "", "requirement": "Required"}
         ]
       },
       {
-        "id": "48d057a1-ecb2-49cf-b5f2-1221e7e950a6",
+        "id": "b3a65283-2480-4e67-8211-a27eb910a1fa",
         "toolType": "custom",
-        "name": "alayacare_update_demographics_v8",
-        "standardizedName": "alayacare_update_demographics_v8",
-        "toolDescription": "Updates full demographics for an AlayaCare client including MAC ID. Pass the integer 'id' from alayacare_create_client_v8 as client_id.",
-        "purpose": "Update AlayaCare client with full demographics, MAC ID, and care needs",
+        "name": "alayacare_update_demographics_v9",
+        "standardizedName": "alayacare_update_demographics_v9",
+        "toolDescription": "Updates full demographics for an AlayaCare client. Pass the integer 'id' from alayacare_create_client_v9 as client_id.",
+        "purpose": "Update full demographics including MAC ID, DOB, contact details, timezone, correspondence",
         "apiEndpoint": "https://asa.uat.alayacare.com/ext/api/v2/patients/clients/{{client_id}}",
         "methodType": "PUT",
         "bodyType": "Json",
-        "body": "{\"external_id\":\"{{external_id}}\",\"demographics\":{\"birthday\":\"{{birthday}}\",\"phone_personal\":\"{{phone_personal}}\",\"email\":\"{{email}}\",\"email_preferred\":\"{{email}}\",\"address\":\"{{address}}\",\"city\":\"{{city}}\",\"state\":\"{{state}}\",\"zip\":\"{{zip}}\",\"country\":\"AU\",\"health_card\":\"{{health_card}}\",\"care_needs\":\"{{care_needs}}\"}}",
+        "body": "{\"external_id\":\"{{external_id}}\",\"timezone\":\"{{timezone}}\",\"correspondence_method\":\"{{correspondence_method}}\",\"demographics\":{\"birthday\":\"{{birthday}}\",\"phone_personal\":\"{{phone_personal}}\",\"email\":\"{{email}}\",\"email_preferred\":\"{{email}}\",\"address\":\"{{address}}\",\"city\":\"{{city}}\",\"state\":\"{{state}}\",\"zip\":\"{{zip}}\",\"country\":\"AU\",\"health_card\":\"{{health_card}}\",\"care_needs\":\"{{care_needs}}\"}}",
         "headersDefinition": [
           {"key": "Authorization", "value": "Basic <YOUR_BASE64_ENCODED_ALAYACARE_CREDENTIALS>", "sensitive": true},
           {"key": "Content-Type", "value": "application/json", "sensitive": false}
@@ -175,25 +172,27 @@
         "routeThroughACC": false,
         "useUserCredentials": false,
         "parametersDefinition": [
-          {"name": "client_id",      "parameterType": "string", "parameterDescription": "Integer AlayaCare client ID returned by alayacare_create_client_v8",  "default": "", "requirement": "Required"},
-          {"name": "external_id",    "parameterType": "string", "parameterDescription": "MAC Aged Care ID e.g. AC27413301",                                    "default": "", "requirement": "Required"},
-          {"name": "birthday",       "parameterType": "string", "parameterDescription": "Date of birth YYYY-MM-DD",    "default": "", "requirement": "Required"},
-          {"name": "phone_personal", "parameterType": "string", "parameterDescription": "Mobile phone number",         "default": "", "requirement": "Optional"},
-          {"name": "email",          "parameterType": "string", "parameterDescription": "Email address",               "default": "", "requirement": "Optional"},
-          {"name": "address",        "parameterType": "string", "parameterDescription": "Street address",              "default": "", "requirement": "Optional"},
-          {"name": "city",           "parameterType": "string", "parameterDescription": "City or suburb",              "default": "", "requirement": "Optional"},
-          {"name": "state",          "parameterType": "string", "parameterDescription": "State code e.g. SA",          "default": "", "requirement": "Optional"},
-          {"name": "zip",            "parameterType": "string", "parameterDescription": "Postcode",                    "default": "", "requirement": "Optional"},
-          {"name": "health_card",    "parameterType": "string", "parameterDescription": "Medicare number",             "default": "", "requirement": "Optional"},
-          {"name": "care_needs",     "parameterType": "string", "parameterDescription": "Brief care needs summary",    "default": "", "requirement": "Optional"}
+          {"name": "client_id",             "parameterType": "string",  "parameterDescription": "Integer AlayaCare client ID from alayacare_create_client_v9",  "default": "", "requirement": "Required"},
+          {"name": "external_id",           "parameterType": "string",  "parameterDescription": "MAC Aged Care ID e.g. AC27413301",                             "default": "", "requirement": "Required"},
+          {"name": "birthday",              "parameterType": "string",  "parameterDescription": "Date of birth YYYY-MM-DD",                                     "default": "", "requirement": "Required"},
+          {"name": "timezone",              "parameterType": "string",  "parameterDescription": "IANA timezone e.g. Australia/Adelaide",                        "default": "", "requirement": "Required"},
+          {"name": "correspondence_method", "parameterType": "string",  "parameterDescription": "mail or email",                                                "default": "", "requirement": "Required"},
+          {"name": "phone_personal",        "parameterType": "string",  "parameterDescription": "Mobile phone number",  "default": "", "requirement": "Optional"},
+          {"name": "email",                 "parameterType": "string",  "parameterDescription": "Email address",        "default": "", "requirement": "Optional"},
+          {"name": "address",               "parameterType": "string",  "parameterDescription": "Street address",       "default": "", "requirement": "Optional"},
+          {"name": "city",                  "parameterType": "string",  "parameterDescription": "City or suburb",       "default": "", "requirement": "Optional"},
+          {"name": "state",                 "parameterType": "string",  "parameterDescription": "State code e.g. SA",  "default": "", "requirement": "Optional"},
+          {"name": "zip",                   "parameterType": "string",  "parameterDescription": "Postcode",             "default": "", "requirement": "Optional"},
+          {"name": "health_card",           "parameterType": "string",  "parameterDescription": "Medicare number",      "default": "", "requirement": "Optional"},
+          {"name": "care_needs",            "parameterType": "string",  "parameterDescription": "Brief care needs summary", "default": "", "requirement": "Optional"}
         ]
       },
       {
-        "id": "a9522d91-caec-4e13-9fe2-fb47fad357c5",
+        "id": "7d981cd7-b006-4e01-99fb-4504c0a83b29",
         "toolType": "custom",
-        "name": "alayacare_self_contact_v8",
-        "standardizedName": "alayacare_self_contact_v8",
-        "toolDescription": "Creates a self-contact for the client. Pass the integer 'id' from alayacare_create_client_v8 as client_id.",
+        "name": "alayacare_self_contact_v9",
+        "standardizedName": "alayacare_self_contact_v9",
+        "toolDescription": "Creates a self-contact for the client. Pass the integer 'id' from alayacare_create_client_v9 as client_id.",
         "purpose": "Create AlayaCare self-contact record",
         "apiEndpoint": "https://asa.uat.alayacare.com/ext/api/v2/contacts",
         "methodType": "POST",
@@ -208,21 +207,21 @@
         "routeThroughACC": false,
         "useUserCredentials": false,
         "parametersDefinition": [
-          {"name": "client_id",      "parameterType": "integer", "parameterDescription": "Integer AlayaCare client ID from alayacare_create_client_v8",  "default": "", "requirement": "Required"},
-          {"name": "first_name",     "parameterType": "string",  "parameterDescription": "Client first name",            "default": "", "requirement": "Required"},
-          {"name": "last_name",      "parameterType": "string",  "parameterDescription": "Client last name",             "default": "", "requirement": "Optional"},
-          {"name": "phone_personal", "parameterType": "string",  "parameterDescription": "Mobile phone number",          "default": "", "requirement": "Optional"},
-          {"name": "email",          "parameterType": "string",  "parameterDescription": "Email address",                "default": "", "requirement": "Optional"},
-          {"name": "address",        "parameterType": "string",  "parameterDescription": "Street address",               "default": "", "requirement": "Optional"},
-          {"name": "city",           "parameterType": "string",  "parameterDescription": "City or suburb",               "default": "", "requirement": "Optional"},
-          {"name": "state",          "parameterType": "string",  "parameterDescription": "State code e.g. SA",           "default": "", "requirement": "Optional"},
-          {"name": "zip",            "parameterType": "string",  "parameterDescription": "Postcode",                     "default": "", "requirement": "Optional"}
+          {"name": "client_id",      "parameterType": "integer", "parameterDescription": "Integer AlayaCare client ID from alayacare_create_client_v9",  "default": "", "requirement": "Required"},
+          {"name": "first_name",     "parameterType": "string",  "parameterDescription": "Client first name",  "default": "", "requirement": "Required"},
+          {"name": "last_name",      "parameterType": "string",  "parameterDescription": "Client last name",   "default": "", "requirement": "Optional"},
+          {"name": "phone_personal", "parameterType": "string",  "parameterDescription": "Mobile phone number", "default": "", "requirement": "Optional"},
+          {"name": "email",          "parameterType": "string",  "parameterDescription": "Email address",       "default": "", "requirement": "Optional"},
+          {"name": "address",        "parameterType": "string",  "parameterDescription": "Street address",      "default": "", "requirement": "Optional"},
+          {"name": "city",           "parameterType": "string",  "parameterDescription": "City or suburb",      "default": "", "requirement": "Optional"},
+          {"name": "state",          "parameterType": "string",  "parameterDescription": "State code e.g. SA", "default": "", "requirement": "Optional"},
+          {"name": "zip",            "parameterType": "string",  "parameterDescription": "Postcode",            "default": "", "requirement": "Optional"}
         ]
       }
     ],
     "models": [
       {
-        "id": "fc3d947d-2096-4c5f-ac48-e91ef4e08151",
+        "id": "93ed82e3-8bc4-4301-b971-fbfb261cf264",
         "displayName": "Gemini 3.1 Flash Lite",
         "modelName": "gemini-3.1-flash-lite-preview",
         "promptId": null,
@@ -233,15 +232,15 @@
         "author": "Google",
         "category": "Multimodal",
         "systemPromptDefinition": {
-          "id": "75c653f0-8c75-4f28-bb97-a0029dc28edc",
-          "name": "MAC PDF Extraction v8",
+          "id": "132d4100-8ebc-4671-836f-419c463e2730",
+          "name": "MAC PDF Extraction v9",
           "versionChangeDescription": "Initial",
           "promptMessage": "Extract structured client data from a My Aged Care (MAC) referral PDF. Return ONLY valid JSON with these exact fields: first_name, last_name, gender (M/F/O), birthday (YYYY-MM-DD), external_id (MAC Aged Care ID e.g. AC27413301), language (en), timezone (Australia/Adelaide for SA), correspondence_method (mail for Post / email), phone_personal (mobile or null), phone_main (home or null), email (or null), address (street only), city, state, zip, country (AU), health_card (Medicare number), care_needs (2-3 sentence summary of recommended services from the assessment). Rules: Male=M Female=F. DOB DD/MM/YYYY convert to YYYY-MM-DD. Not applicable=null.",
           "isAgentSpecific": true
         }
       },
       {
-        "id": "cdad2404-8a62-4752-9209-5a8b8196a9db",
+        "id": "9afcdd80-92cd-45ea-a81d-ad58487e81c2",
         "displayName": "Gemini 3.1 Flash Lite",
         "modelName": "gemini-3.1-flash-lite-preview",
         "promptId": null,
@@ -252,23 +251,23 @@
         "author": "Google",
         "category": "Multimodal",
         "systemPromptDefinition": {
-          "id": "86f6b56e-301f-49d6-849f-d7bda428ae64",
-          "name": "AlayaCare API Orchestration v8",
+          "id": "f42ed08d-0840-4d3c-b37b-7db0bec65cf4",
+          "name": "AlayaCare API Orchestration v9",
           "versionChangeDescription": "Initial",
-          "promptMessage": "You are an AlayaCare intake assistant. You must call all three tools in order using the exact field values from the extracted JSON.\n\nSTEP 1 â€” Call alayacare_create_client_v8 with these fields from the extracted data:\n- first_name (required)\n- last_name (required)\n- gender (required: M, F, or O)\n- language (required: e.g. en)\n- timezone (required: e.g. Australia/Adelaide)\n- correspondence_method (required: mail or email)\n\nSTEP 2 â€” The response from Step 1 contains an integer 'id'. Call alayacare_update_demographics_v8 with:\n- client_id = the integer id from Step 1\n- external_id (required: MAC Aged Care ID e.g. AC27413301)\n- birthday (required: YYYY-MM-DD)\n- phone_personal (if available)\n- email (if available)\n- address, city, state, zip (if available)\n- health_card (Medicare number, if available)\n- care_needs (if available)\n\nSTEP 3 â€” Call alayacare_self_contact_v8 with:\n- client_id = the integer id from Step 1\n- first_name, last_name\n- phone_personal, email, address, city, state, zip (if available)\n\nAfter all three tools succeed, report:\nAlayaCare Client ID created: [id from Step 1]\nMAC ID: [external_id]\nLink: https://asa.uat.alayacare.com/patients/clients/[id]/details",
+          "promptMessage": "You are an AlayaCare intake assistant. Call all three tools in order.\n\nSTEP 1 â€” Call alayacare_create_client_v9:\n- first_name (required)\n- last_name (required)\n- gender (required: M, F, or O)\n\nSTEP 2 â€” Extract the integer 'id' from the Step 1 response. Call alayacare_update_demographics_v9:\n- client_id = integer id from Step 1 response\n- external_id (required: the MAC Aged Care ID)\n- birthday (required: YYYY-MM-DD)\n- timezone (required: use Australia/Adelaide for SA clients)\n- correspondence_method (required: use mail or email)\n- phone_personal, email, address, city, state, zip, health_card, care_needs (pass all available values)\n\nSTEP 3 â€” Call alayacare_self_contact_v9:\n- client_id = integer id from Step 1 response\n- first_name, last_name\n- phone_personal, email, address, city, state, zip (pass all available values)\n\nAfter all steps succeed, report:\nAlayaCare Client ID: [id]\nMAC ID: [external_id]\nLink: https://asa.uat.alayacare.com/patients/clients/[id]/details",
           "isAgentSpecific": true
         }
       }
     ],
     "approvalRequests": [
       {
-        "id": "ff14c758-601b-41c4-b288-71b8855f83d3",
+        "id": "2cab5a9e-f629-452e-a51f-9e689892c537",
         "message": "Please review the extracted client details before creating in AlayaCare UAT:\n\n{{Steps.Extract_Client_Data.Output}}\n\nApprove to proceed or Deny to cancel.",
         "emailNotification": false,
         "approvalDescription": "Approve to create in AlayaCare UAT",
         "denialDescription": "Deny to cancel",
-        "approvedHandleId": "3da70a44-72d0-43d4-978e-fd1735ffeaf6",
-        "deniedHandleId": "fc984f62-79d5-4a34-b764-f712fc88f117"
+        "approvedHandleId": "0bd62be0-974b-400b-a7b8-b03908707c20",
+        "deniedHandleId": "79f13e5c-e11d-4831-8c55-7b8568c6c49b"
       }
     ],
     "dataSources": null,
