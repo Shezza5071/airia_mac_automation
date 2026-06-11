@@ -22,8 +22,8 @@
                  },
     "agent":  {
                   "id":  "e6a82c0f-cb33-4249-ab5a-fe7397d680e9",
-                  "name":  "Create AlayaCare Client from MAC PDF v15",
-                  "executionName":  "create_alayacare_client_mac_pdf_v15",
+                  "name":  "Create AlayaCare Client from MAC PDF v16",
+                  "executionName":  "create_alayacare_client_mac_pdf_v16",
                   "agentIcon":  null,
                   "agentDescription":  "Extracts client data from MAC PDF and creates AlayaCare client",
                   "markdownDescription":  null,
@@ -151,7 +151,7 @@
                                                                }
                                                            ],
                                     "stepTitle":  "Confirm Details",
-                                    "content":  "Please review the extracted client data before creating in AlayaCare:\n\n**Name:** {{Steps.Extract_Client_Data.Output.first_name}} {{Steps.Extract_Client_Data.Output.last_name}}\n**Gender:** {{Steps.Extract_Client_Data.Output.gender}}\n**Date of Birth:** {{Steps.Extract_Client_Data.Output.birthday}}\n**MAC ID:** {{Steps.Extract_Client_Data.Output.external_id}}\n**Mobile:** {{Steps.Extract_Client_Data.Output.phone_personal}}\n**Home Phone:** {{Steps.Extract_Client_Data.Output.phone_main}}\n**Email:** {{Steps.Extract_Client_Data.Output.email}}\n**Address:** {{Steps.Extract_Client_Data.Output.address}}, {{Steps.Extract_Client_Data.Output.city}} {{Steps.Extract_Client_Data.Output.state}} {{Steps.Extract_Client_Data.Output.zip}}\n**Medicare:** {{Steps.Extract_Client_Data.Output.health_card}}\n\nClick Approve to create the client in AlayaCare UAT, or Deny to cancel.",
+                                    "content":  "Please review the extracted client data before creating in AlayaCare:\n\n**Name:** {{Steps.Extract_Client_Data.value.first_name}} {{Steps.Extract_Client_Data.value.last_name}}\n**Gender:** {{Steps.Extract_Client_Data.value.gender}}\n**Date of Birth:** {{Steps.Extract_Client_Data.value.birthday}}\n**MAC ID:** {{Steps.Extract_Client_Data.value.external_id}}\n**Mobile:** {{Steps.Extract_Client_Data.value.phone_personal}}\n**Home Phone:** {{Steps.Extract_Client_Data.value.phone_main}}\n**Email:** {{Steps.Extract_Client_Data.value.email}}\n**Address:** {{Steps.Extract_Client_Data.value.address}}, {{Steps.Extract_Client_Data.value.city}} {{Steps.Extract_Client_Data.value.state}} {{Steps.Extract_Client_Data.value.zip}}\n**Medicare:** {{Steps.Extract_Client_Data.value.health_card}}\n\nClick Approve to create the client in AlayaCare UAT, or Deny to cancel.",
                                     "approvalRequestId":  "fb37957f-15ff-410d-ac48-95e2ce0656c3"
                                 },
                                 {
@@ -355,7 +355,7 @@
                          "category":  "Actions",
                          "group":  "Http",
                          "version":  "1.0",
-                         "stepParameters":  "{\"body\":\"{\\\"demographics\\\":{\\\"first_name\\\":\\\"{{Steps.Extract_Client_Data.Output.first_name}}\\\",\\\"last_name\\\":\\\"{{Steps.Extract_Client_Data.Output.last_name}}\\\",\\\"gender\\\":\\\"{{Steps.Extract_Client_Data.Output.gender}}\\\"}}\",\"method\":\"POST\",\"url\":\"https://asa.uat.alayacare.com/ext/api/v2/patients/clients\",\"headers\":{\"Authorization\":\"Basic PLACEHOLDER_ALAYACARE_BASE64\"},\"contentType\":0}",
+                         "stepParameters":  "{\"body\":\"{\\\"demographics\\\":{\\\"first_name\\\":\\\"{{Steps.Extract_Client_Data.value.first_name}}\\\",\\\"last_name\\\":\\\"{{Steps.Extract_Client_Data.value.last_name}}\\\",\\\"gender\\\":\\\"{{Steps.Extract_Client_Data.value.gender}}\\\"}}\",\"method\":\"POST\",\"url\":\"https://asa.uat.alayacare.com/ext/api/v2/patients/clients\",\"headers\":{\"Authorization\":\"Basic PLACEHOLDER_ALAYACARE_BASE64\"},\"contentType\":0}",
                          "credentialReferences":  [
 
                                                   ],
@@ -370,7 +370,7 @@
                          "category":  "Actions",
                          "group":  "Http",
                          "version":  "1.0",
-                         "stepParameters":  "{\"body\":\"{\\\"external_id\\\":\\\"{{Steps.Extract_Client_Data.Output.external_id}}\\\",\\\"timezone\\\":\\\"Australia/Adelaide\\\",\\\"language\\\":\\\"en\\\",\\\"demographics\\\":{\\\"birthday\\\":\\\"{{Steps.Extract_Client_Data.Output.birthday}}\\\",\\\"phone_personal\\\":\\\"{{Steps.Extract_Client_Data.Output.phone_personal}}\\\",\\\"phone_main\\\":\\\"{{Steps.Extract_Client_Data.Output.phone_main}}\\\",\\\"email\\\":\\\"{{Steps.Extract_Client_Data.Output.email}}\\\",\\\"address\\\":\\\"{{Steps.Extract_Client_Data.Output.address}}\\\",\\\"city\\\":\\\"{{Steps.Extract_Client_Data.Output.city}}\\\",\\\"state\\\":\\\"{{Steps.Extract_Client_Data.Output.state}}\\\",\\\"zip\\\":\\\"{{Steps.Extract_Client_Data.Output.zip}}\\\",\\\"country\\\":\\\"AU\\\",\\\"health_card\\\":\\\"{{Steps.Extract_Client_Data.Output.health_card}}\\\"}}\",\"method\":\"PUT\",\"url\":\"https://asa.uat.alayacare.com/ext/api/v2/patients/clients/{{Steps.Create_Client.Output.Body.id}}\",\"headers\":{\"Authorization\":\"Basic PLACEHOLDER_ALAYACARE_BASE64\"},\"contentType\":0}",
+                         "stepParameters":  "{\"body\":\"{\\\"external_id\\\":\\\"{{Steps.Extract_Client_Data.value.external_id}}\\\",\\\"timezone\\\":\\\"Australia/Adelaide\\\",\\\"language\\\":\\\"en\\\",\\\"demographics\\\":{\\\"birthday\\\":\\\"{{Steps.Extract_Client_Data.value.birthday}}\\\",\\\"phone_personal\\\":\\\"{{Steps.Extract_Client_Data.value.phone_personal}}\\\",\\\"phone_main\\\":\\\"{{Steps.Extract_Client_Data.value.phone_main}}\\\",\\\"email\\\":\\\"{{Steps.Extract_Client_Data.value.email}}\\\",\\\"address\\\":\\\"{{Steps.Extract_Client_Data.value.address}}\\\",\\\"city\\\":\\\"{{Steps.Extract_Client_Data.value.city}}\\\",\\\"state\\\":\\\"{{Steps.Extract_Client_Data.value.state}}\\\",\\\"zip\\\":\\\"{{Steps.Extract_Client_Data.value.zip}}\\\",\\\"country\\\":\\\"AU\\\",\\\"health_card\\\":\\\"{{Steps.Extract_Client_Data.value.health_card}}\\\"}}\",\"method\":\"PUT\",\"url\":\"https://asa.uat.alayacare.com/ext/api/v2/patients/clients/{{Steps.Create_Client.output.body.id}}\",\"headers\":{\"Authorization\":\"Basic PLACEHOLDER_ALAYACARE_BASE64\"},\"contentType\":0}",
                          "credentialReferences":  [
 
                                                   ],
@@ -385,7 +385,7 @@
                          "category":  "Actions",
                          "group":  "Http",
                          "version":  "1.0",
-                         "stepParameters":  "{\"body\":\"{\\\"client_id\\\":{{Steps.Create_Client.Output.Body.id}},\\\"contact_type\\\":\\\"Personal\\\",\\\"relationship\\\":\\\"Self\\\",\\\"demographics\\\":{\\\"first_name\\\":\\\"{{Steps.Extract_Client_Data.Output.first_name}}\\\",\\\"last_name\\\":\\\"{{Steps.Extract_Client_Data.Output.last_name}}\\\",\\\"phone_personal\\\":\\\"{{Steps.Extract_Client_Data.Output.phone_personal}}\\\",\\\"phone_main\\\":\\\"{{Steps.Extract_Client_Data.Output.phone_main}}\\\",\\\"email\\\":\\\"{{Steps.Extract_Client_Data.Output.email}}\\\",\\\"address\\\":\\\"{{Steps.Extract_Client_Data.Output.address}}\\\",\\\"city\\\":\\\"{{Steps.Extract_Client_Data.Output.city}}\\\",\\\"state\\\":\\\"{{Steps.Extract_Client_Data.Output.state}}\\\",\\\"zip\\\":\\\"{{Steps.Extract_Client_Data.Output.zip}}\\\"}}\",\"method\":\"POST\",\"url\":\"https://asa.uat.alayacare.com/ext/api/v2/contacts\",\"headers\":{\"Authorization\":\"Basic PLACEHOLDER_ALAYACARE_BASE64\"},\"contentType\":0}",
+                         "stepParameters":  "{\"body\":\"{\\\"client_id\\\":{{Steps.Create_Client.output.body.id}},\\\"contact_type\\\":\\\"Personal\\\",\\\"relationship\\\":\\\"Self\\\",\\\"demographics\\\":{\\\"first_name\\\":\\\"{{Steps.Extract_Client_Data.value.first_name}}\\\",\\\"last_name\\\":\\\"{{Steps.Extract_Client_Data.value.last_name}}\\\",\\\"phone_personal\\\":\\\"{{Steps.Extract_Client_Data.value.phone_personal}}\\\",\\\"phone_main\\\":\\\"{{Steps.Extract_Client_Data.value.phone_main}}\\\",\\\"email\\\":\\\"{{Steps.Extract_Client_Data.value.email}}\\\",\\\"address\\\":\\\"{{Steps.Extract_Client_Data.value.address}}\\\",\\\"city\\\":\\\"{{Steps.Extract_Client_Data.value.city}}\\\",\\\"state\\\":\\\"{{Steps.Extract_Client_Data.value.state}}\\\",\\\"zip\\\":\\\"{{Steps.Extract_Client_Data.value.zip}}\\\"}}\",\"method\":\"POST\",\"url\":\"https://asa.uat.alayacare.com/ext/api/v2/contacts\",\"headers\":{\"Authorization\":\"Basic PLACEHOLDER_ALAYACARE_BASE64\"},\"contentType\":0}",
                          "credentialReferences":  [
 
                                                   ],
