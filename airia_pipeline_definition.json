@@ -1,7 +1,7 @@
-{
+﻿{
     "available":  true,
     "metadata":  {
-                     "id":  "e6a82c0f-cb33-4249-ab5a-fe7397d680e9",
+                     "id":  "c52fb5e6-136d-48c5-9548-97d954e13cae",
                      "exportVersion":  "20260603123638_AddStatusToClaudeGuardrailEvaluations",
                      "tagline":  "Create AlayaCare client from MAC referral PDF",
                      "agentDescription":  "Extracts client data from MAC PDF and creates AlayaCare client via 3 API calls",
@@ -21,9 +21,9 @@
                      "country":  null
                  },
     "agent":  {
-                  "id":  "e6a82c0f-cb33-4249-ab5a-fe7397d680e9",
-                  "name":  "Create AlayaCare Client from MAC PDF v17",
-                  "executionName":  "create_alayacare_client_mac_pdf_v17",
+                  "id":  "c52fb5e6-136d-48c5-9548-97d954e13cae",
+                  "name":  "Create AlayaCare Client from MAC PDF v18",
+                  "executionName":  "create_alayacare_client_mac_pdf_v18",
                   "agentIcon":  null,
                   "agentDescription":  "Extracts client data from MAC PDF and creates AlayaCare client",
                   "markdownDescription":  null,
@@ -37,7 +37,7 @@
                   "alignment":  "Vertical",
                   "steps":  [
                                 {
-                                    "id":  "88238525-228d-4abb-916a-433df408708c",
+                                    "id":  "e4bd0eed-3bf4-4380-ba62-61eee88a6dce",
                                     "stepType":  "inputStep",
                                     "position":  {
                                                      "x":  "48",
@@ -45,7 +45,7 @@
                                                  },
                                     "handles":  [
                                                     {
-                                                        "uuid":  "044f1ca7-166f-4ee4-bfd1-2c1ba3b2e997",
+                                                        "uuid":  "d52cb689-6b87-4a02-aa4c-acfb5585daf7",
                                                         "type":  "source",
                                                         "label":  "",
                                                         "tooltip":  "",
@@ -60,7 +60,7 @@
                                     "preferredPdfParserId":  "3b6d704c-3442-405b-afd4-d5dc64b6ea41"
                                 },
                                 {
-                                    "id":  "d06badf0-3445-4254-8e09-3ceb1dcd3f17",
+                                    "id":  "98e0914e-0d0b-41b7-9397-8210773a7585",
                                     "stepType":  "AIOperation",
                                     "position":  {
                                                      "x":  "12",
@@ -68,7 +68,7 @@
                                                  },
                                     "handles":  [
                                                     {
-                                                        "uuid":  "afd40977-0552-4564-8081-83c3b2b5e970",
+                                                        "uuid":  "07040c5f-f8bb-4ad2-a4bb-24f9446ba0ea",
                                                         "type":  "target",
                                                         "label":  "",
                                                         "tooltip":  "",
@@ -76,7 +76,7 @@
                                                         "y":  0
                                                     },
                                                     {
-                                                        "uuid":  "c6c19d7c-a20e-480b-88aa-51a411a9b14d",
+                                                        "uuid":  "0379e483-db62-44f5-9bb9-3946f0015fab",
                                                         "type":  "source",
                                                         "label":  "",
                                                         "tooltip":  "",
@@ -86,20 +86,20 @@
                                                 ],
                                     "dependenciesObject":  [
                                                                {
-                                                                   "parentId":  "88238525-228d-4abb-916a-433df408708c",
-                                                                   "parentHandleId":  "044f1ca7-166f-4ee4-bfd1-2c1ba3b2e997",
-                                                                   "handleId":  "afd40977-0552-4564-8081-83c3b2b5e970"
+                                                                   "parentId":  "e4bd0eed-3bf4-4380-ba62-61eee88a6dce",
+                                                                   "parentHandleId":  "d52cb689-6b87-4a02-aa4c-acfb5585daf7",
+                                                                   "handleId":  "07040c5f-f8bb-4ad2-a4bb-24f9446ba0ea"
                                                                }
                                                            ],
                                     "temperature":  1,
                                     "includeDateTimeContext":  true,
                                     "includeUserDetailsContext":  true,
-                                    "modelId":  "8ceaa8b7-f4f0-4693-8d6e-0e5c6a1e7ae3",
+                                    "modelId":  "d77f6dd4-0ed6-4970-b272-a3a8736219bb",
                                     "toolIds":  [
 
                                                 ],
                                     "toolParamsJson":  "{}",
-                                    "promptId":  "ccce51a0-3005-4abb-baab-56189fe3ab9c",
+                                    "promptId":  "d8ae6a4f-4b7b-4e30-a040-5f96cc7ba744",
                                     "stepTitle":  "Extract Client Data",
                                     "useUserInput":  true,
                                     "aiOperationStepIncludeChatHistory":  true,
@@ -111,7 +111,7 @@
                                     "aiOperationStepOutputSchemaJson":  "{\"type\":\"object\",\"properties\":{\"first_name\":{\"type\":\"string\"},\"last_name\":{\"type\":\"string\"},\"gender\":{\"type\":\"string\"},\"birthday\":{\"type\":\"string\"},\"phone_personal\":{\"type\":\"string\"},\"phone_main\":{\"type\":\"string\"},\"email\":{\"type\":\"string\"},\"address\":{\"type\":\"string\"},\"city\":{\"type\":\"string\"},\"state\":{\"type\":\"string\"},\"zip\":{\"type\":\"string\"},\"external_id\":{\"type\":\"string\"},\"health_card\":{\"type\":\"string\"}},\"required\":[\"first_name\",\"last_name\",\"gender\",\"birthday\",\"address\",\"city\",\"state\",\"zip\",\"external_id\"]}"
                                 },
                                 {
-                                    "id":  "1e7adde2-4783-4597-afca-e3594ea14233",
+                                    "id":  "2265b4e8-66f4-49d8-b7af-756f6b63e780",
                                     "stepType":  "approvalStep",
                                     "position":  {
                                                      "x":  "12",
@@ -119,7 +119,7 @@
                                                  },
                                     "handles":  [
                                                     {
-                                                        "uuid":  "e0a7919f-20a8-4aa4-b5e4-1fd80d4ed733",
+                                                        "uuid":  "acca2dc8-c2f7-485c-89a1-6116fcaa7540",
                                                         "type":  "target",
                                                         "label":  "",
                                                         "tooltip":  "",
@@ -127,7 +127,7 @@
                                                         "y":  0
                                                     },
                                                     {
-                                                        "uuid":  "32178109-ef4e-4299-9fad-51e8092a694d",
+                                                        "uuid":  "919e96fc-75a5-4033-ae60-fbb23c7d3cf8",
                                                         "type":  "source",
                                                         "label":  "",
                                                         "tooltip":  "",
@@ -135,7 +135,7 @@
                                                         "y":  0
                                                     },
                                                     {
-                                                        "uuid":  "5cee4fc4-e161-4aea-abec-e975d43aceff",
+                                                        "uuid":  "1978abfc-4339-4f62-a084-e6987440046c",
                                                         "type":  "source",
                                                         "label":  "",
                                                         "tooltip":  "",
@@ -145,17 +145,17 @@
                                                 ],
                                     "dependenciesObject":  [
                                                                {
-                                                                   "parentId":  "d06badf0-3445-4254-8e09-3ceb1dcd3f17",
-                                                                   "parentHandleId":  "c6c19d7c-a20e-480b-88aa-51a411a9b14d",
-                                                                   "handleId":  "e0a7919f-20a8-4aa4-b5e4-1fd80d4ed733"
+                                                                   "parentId":  "98e0914e-0d0b-41b7-9397-8210773a7585",
+                                                                   "parentHandleId":  "0379e483-db62-44f5-9bb9-3946f0015fab",
+                                                                   "handleId":  "acca2dc8-c2f7-485c-89a1-6116fcaa7540"
                                                                }
                                                            ],
                                     "stepTitle":  "Confirm Details",
                                     "content":  "Client data extracted from PDF. Review the JSON above and click Approve to create the client in AlayaCare UAT, or Deny to cancel.",
-                                    "approvalRequestId":  "fb37957f-15ff-410d-ac48-95e2ce0656c3"
+                                    "approvalRequestId":  "d6d85ba3-d96b-43e3-909b-afa5407b6f52"
                                 },
                                 {
-                                    "id":  "166001d4-ab49-4273-bc8a-a4aad0a5c786",
+                                    "id":  "5a0ba6c6-2682-4081-b0a8-8ecd7984f3c0",
                                     "stepType":  "pythonStep",
                                     "position":  {
                                                      "x":  "12",
@@ -163,7 +163,7 @@
                                                  },
                                     "handles":  [
                                                     {
-                                                        "uuid":  "507a9588-9ebc-4f1d-86d4-296c1e9ad3f9",
+                                                        "uuid":  "ce558633-1193-45fd-8d49-9a92d093a444",
                                                         "type":  "target",
                                                         "label":  "",
                                                         "tooltip":  "",
@@ -171,7 +171,7 @@
                                                         "y":  0
                                                     },
                                                     {
-                                                        "uuid":  "f74e050e-754e-4614-930a-2af4a0da1148",
+                                                        "uuid":  "f998d5c5-c98c-40c8-a10f-9289b67cb805",
                                                         "type":  "source",
                                                         "label":  "",
                                                         "tooltip":  "",
@@ -181,24 +181,24 @@
                                                 ],
                                     "dependenciesObject":  [
                                                                {
-                                                                   "parentId":  "1e7adde2-4783-4597-afca-e3594ea14233",
-                                                                   "parentHandleId":  "32178109-ef4e-4299-9fad-51e8092a694d",
-                                                                   "handleId":  "507a9588-9ebc-4f1d-86d4-296c1e9ad3f9"
+                                                                   "parentId":  "2265b4e8-66f4-49d8-b7af-756f6b63e780",
+                                                                   "parentHandleId":  "919e96fc-75a5-4033-ae60-fbb23c7d3cf8",
+                                                                   "handleId":  "ce558633-1193-45fd-8d49-9a92d093a444"
                                                                }
                                                            ],
                                     "stepTitle":  "Create AlayaCare Client",
-                                    "pythonCodeBlockId":  "aee58bb1-23e4-4542-8c28-d8cf57c4387c"
+                                    "pythonCodeBlockId":  "638eb086-a0c3-407d-b9b5-cce2dec7c33a"
                                 },
                                 {
-                                    "id":  "ff8fee36-40c7-41b1-9f19-41fbfe57cdf7",
+                                    "id":  "6f75576e-c2b5-4978-af44-ba2cc52a0875",
                                     "stepType":  "outputStep",
                                     "position":  {
                                                      "x":  "12",
-                                                     "y":  "1220"
+                                                     "y":  "820"
                                                  },
                                     "handles":  [
                                                     {
-                                                        "uuid":  "317da9b1-af64-4415-8c9d-4a24530d73b8",
+                                                        "uuid":  "11fd042b-a4f4-420a-8e20-fd5559f27c66",
                                                         "type":  "target",
                                                         "label":  "",
                                                         "tooltip":  "",
@@ -206,7 +206,7 @@
                                                         "y":  0
                                                     },
                                                     {
-                                                        "uuid":  "b2e91a3c-5d4f-4e7a-9c6b-1f2d3e4a5b6c",
+                                                        "uuid":  "63680697-4185-4c96-8590-77a3689f95a5",
                                                         "type":  "target",
                                                         "label":  "",
                                                         "tooltip":  "",
@@ -216,14 +216,14 @@
                                                 ],
                                     "dependenciesObject":  [
                                                                {
-                                                                   "parentId":  "166001d4-ab49-4273-bc8a-a4aad0a5c786",
-                                                                   "parentHandleId":  "f74e050e-754e-4614-930a-2af4a0da1148",
-                                                                   "handleId":  "317da9b1-af64-4415-8c9d-4a24530d73b8"
+                                                                   "parentId":  "5a0ba6c6-2682-4081-b0a8-8ecd7984f3c0",
+                                                                   "parentHandleId":  "f998d5c5-c98c-40c8-a10f-9289b67cb805",
+                                                                   "handleId":  "11fd042b-a4f4-420a-8e20-fd5559f27c66"
                                                                },
                                                                {
-                                                                   "parentId":  "1e7adde2-4783-4597-afca-e3594ea14233",
-                                                                   "parentHandleId":  "5cee4fc4-e161-4aea-abec-e975d43aceff",
-                                                                   "handleId":  "b2e91a3c-5d4f-4e7a-9c6b-1f2d3e4a5b6c"
+                                                                   "parentId":  "2265b4e8-66f4-49d8-b7af-756f6b63e780",
+                                                                   "parentHandleId":  "1978abfc-4339-4f62-a084-e6987440046c",
+                                                                   "handleId":  "63680697-4185-4c96-8590-77a3689f95a5"
                                                                }
                                                            ],
                                     "stepTitle":  "Output"
@@ -237,7 +237,7 @@
     "dataSources":  null,
     "prompts":  [
                     {
-                        "id":  "ccce51a0-3005-4abb-baab-56189fe3ab9c",
+                        "id":  "d8ae6a4f-4b7b-4e30-a040-5f96cc7ba744",
                         "name":  "Extract Client Data System Prompt",
                         "versionChangeDescription":  "",
                         "promptMessage":  "You are extracting client data from a My Aged Care (MAC) referral PDF for the AlayaCare client management system.\n\nExtract the following fields:\n- first_name: given/first name\n- last_name: family/last name\n- gender: M for Male, F for Female, O for Other/Unknown\n- birthday: date of birth in YYYY-MM-DD format (convert from DD/MM/YYYY on PDF)\n- phone_personal: mobile phone number (empty string if not provided)\n- phone_main: home/landline phone number (empty string if not provided)\n- email: email address (empty string if not provided)\n- address: street number and name only (e.g. 14 Smith Street)\n- city: suburb name\n- state: state abbreviation (e.g. SA, NSW, VIC)\n- zip: 4-digit postcode as a string\n- external_id: the MAC Aged Care ID starting with AC (e.g. AC27413301)\n- health_card: Medicare card number (empty string if not provided)\n\nUse empty string for any optional fields not found in the PDF.",
@@ -247,7 +247,7 @@
     "tools":  null,
     "models":  [
                    {
-                       "id":  "8ceaa8b7-f4f0-4693-8d6e-0e5c6a1e7ae3",
+                       "id":  "d77f6dd4-0ed6-4970-b272-a3a8736219bb",
                        "displayName":  "Gemini 3.1 Flash Lite",
                        "modelName":  "gemini-2.0-flash-lite",
                        "promptId":  null,
@@ -263,8 +263,8 @@
     "memories":  null,
     "pythonCodeBlocks":  [
                              {
-                                 "id":  "aee58bb1-23e4-4542-8c28-d8cf57c4387c",
-                                 "code":  "import requests\nimport json\n\nALAYACARE_BASE_URL = \"https://asa.uat.alayacare.com/ext/api/v2\"\nAUTH = \"Basic PLACEHOLDER_ALAYACARE_BASE64\"\nHEADERS = {\"Authorization\": AUTH, \"Content-Type\": \"application/json\"}\n\ntry:\n    client_data = json.loads(input)\nexcept Exception as e:\n    print(f\"Error parsing input: {e}\")\n    print(f\"Raw input: {repr(input)}\")\n    raise\n\n# Step 1: Create Client\nr1 = requests.post(f\"{ALAYACARE_BASE_URL}/patients/clients\", headers=HEADERS, json={\n    \"demographics\": {\"first_name\": client_data[\"first_name\"], \"last_name\": client_data[\"last_name\"], \"gender\": client_data[\"gender\"]},\n    \"external_id\": client_data[\"external_id\"], \"language\": \"en\", \"timezone\": \"Australia/Adelaide\"\n})\nprint(f\"Create client: {r1.status_code} {r1.text}\")\nclient_id = r1.json().get(\"id\") if r1.ok else None\n\n# Step 2: Update Demographics\nif client_id:\n    r2 = requests.put(f\"{ALAYACARE_BASE_URL}/patients/clients/{client_id}\", headers=HEADERS, json={\n        \"demographics\": {\n            \"birthday\": client_data.get(\"birthday\",\"\"), \"phone_personal\": client_data.get(\"phone_personal\",\"\"),\n            \"phone_main\": client_data.get(\"phone_main\",\"\"), \"email\": client_data.get(\"email\",\"\"),\n            \"address\": client_data.get(\"address\",\"\"), \"city\": client_data.get(\"city\",\"\"),\n            \"state\": client_data.get(\"state\",\"\"), \"zip\": client_data.get(\"zip\",\"\"),\n            \"country\": \"AU\", \"health_card\": client_data.get(\"health_card\",\"\")\n        }\n    })\n    print(f\"Update demographics: {r2.status_code} {r2.text}\")\n\n# Step 3: Create Contact\nif client_id:\n    r3 = requests.post(f\"{ALAYACARE_BASE_URL}/contacts\", headers=HEADERS, json={\n        \"client_id\": client_id, \"contact_type\": \"Personal\", \"relationship\": \"Self\",\n        \"demographics\": {\n            \"first_name\": client_data[\"first_name\"], \"last_name\": client_data[\"last_name\"],\n            \"phone_personal\": client_data.get(\"phone_personal\",\"\"), \"phone_main\": client_data.get(\"phone_main\",\"\"),\n            \"email\": client_data.get(\"email\",\"\"), \"address\": client_data.get(\"address\",\"\"),\n            \"city\": client_data.get(\"city\",\"\"), \"state\": client_data.get(\"state\",\"\"), \"zip\": client_data.get(\"zip\",\"\")\n        }\n    })\n    print(f\"Create contact: {r3.status_code} {r3.text}\")\n\nif client_id:\n    print(f\"SUCCESS: AlayaCare client ID={client_id}, Portal: https://asa.uat.alayacare.com/patients/clients/{client_id}/details\")\nelse:\n    print(\"FAILED: Could not create client\")",
+                                 "id":  "638eb086-a0c3-407d-b9b5-cce2dec7c33a",
+                                 "code":  "import requests\nimport json\n\nALAYACARE_BASE_URL = \"https://asa.uat.alayacare.com/ext/api/v2\"\nAUTH = \"Basic PLACEHOLDER_ALAYACARE_BASE64\"\nHEADERS = {\"Authorization\": AUTH, \"Content-Type\": \"application/json\"}\n\ntry:\n    client_data = json.loads(input)\nexcept Exception as e:\n    output = f\"ERROR: Could not parse input - {e}\"\n    raise\n\n# Step 1: Create Client\nr1 = requests.post(f\"{ALAYACARE_BASE_URL}/patients/clients\", headers=HEADERS, json={\n    \"demographics\": {\"first_name\": client_data[\"first_name\"], \"last_name\": client_data[\"last_name\"], \"gender\": client_data[\"gender\"]},\n    \"external_id\": client_data[\"external_id\"], \"language\": \"en\", \"timezone\": \"Australia/Adelaide\"\n})\nprint(f\"Create client: {r1.status_code} {r1.text}\")\nclient_id = r1.json().get(\"id\") if r1.ok else None\n\n# Step 2: Update Demographics\nif client_id:\n    r2 = requests.put(f\"{ALAYACARE_BASE_URL}/patients/clients/{client_id}\", headers=HEADERS, json={\n        \"demographics\": {\n            \"birthday\": client_data.get(\"birthday\",\"\"), \"phone_personal\": client_data.get(\"phone_personal\",\"\"),\n            \"phone_main\": client_data.get(\"phone_main\",\"\"), \"email\": client_data.get(\"email\",\"\"),\n            \"address\": client_data.get(\"address\",\"\"), \"city\": client_data.get(\"city\",\"\"),\n            \"state\": client_data.get(\"state\",\"\"), \"zip\": client_data.get(\"zip\",\"\"),\n            \"country\": \"AU\", \"health_card\": client_data.get(\"health_card\",\"\")\n        }\n    })\n    print(f\"Update demographics: {r2.status_code} {r2.text}\")\n\n# Step 3: Create Contact\nif client_id:\n    r3 = requests.post(f\"{ALAYACARE_BASE_URL}/contacts\", headers=HEADERS, json={\n        \"client_id\": client_id, \"contact_type\": \"Personal\", \"relationship\": \"Self\",\n        \"demographics\": {\n            \"first_name\": client_data[\"first_name\"], \"last_name\": client_data[\"last_name\"],\n            \"phone_personal\": client_data.get(\"phone_personal\",\"\"), \"phone_main\": client_data.get(\"phone_main\",\"\"),\n            \"email\": client_data.get(\"email\",\"\"), \"address\": client_data.get(\"address\",\"\"),\n            \"city\": client_data.get(\"city\",\"\"), \"state\": client_data.get(\"state\",\"\"), \"zip\": client_data.get(\"zip\",\"\")\n        }\n    })\n    print(f\"Create contact: {r3.status_code} {r3.text}\")\n\nif client_id:\n    output = f\"SUCCESS: {client_data[\u0027first_name\u0027]} {client_data[\u0027last_name\u0027]} created in AlayaCare. Client ID={client_id}. Portal: https://asa.uat.alayacare.com/patients/clients/{client_id}/details\"\nelif r1.status_code == 409:\n    output = f\"WARNING: Client {client_data[\u0027external_id\u0027]} already exists in AlayaCare. No new record created.\"\nelse:\n    output = f\"FAILED: Could not create client for {client_data[\u0027external_id\u0027]}. Status: {r1.status_code}\"",
                                  "isStructuredOutputEnabled":  false,
                                  "includeParsedFiles":  false
                              }
@@ -272,13 +272,13 @@
     "routers":  null,
     "approvalRequests":  [
                              {
-                                 "id":  "fb37957f-15ff-410d-ac48-95e2ce0656c3",
+                                 "id":  "d6d85ba3-d96b-43e3-909b-afa5407b6f52",
                                  "message":  "",
                                  "emailNotification":  false,
                                  "approvalDescription":  "Create client in AlayaCare UAT",
                                  "denialDescription":  "Cancel client creation",
-                                 "approvedHandleId":  "32178109-ef4e-4299-9fad-51e8092a694d",
-                                 "deniedHandleId":  "5cee4fc4-e161-4aea-abec-e975d43aceff"
+                                 "approvedHandleId":  "919e96fc-75a5-4033-ae60-fbb23c7d3cf8",
+                                 "deniedHandleId":  "1978abfc-4339-4f62-a084-e6987440046c"
                              }
                          ],
     "webhookApprovalRequests":  null,
