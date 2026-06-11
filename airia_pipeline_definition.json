@@ -22,8 +22,8 @@
                  },
     "agent":  {
                   "id":  "e6a82c0f-cb33-4249-ab5a-fe7397d680e9",
-                  "name":  "Create AlayaCare Client from MAC PDF v16",
-                  "executionName":  "create_alayacare_client_mac_pdf_v16",
+                  "name":  "Create AlayaCare Client from MAC PDF v17",
+                  "executionName":  "create_alayacare_client_mac_pdf_v17",
                   "agentIcon":  null,
                   "agentDescription":  "Extracts client data from MAC PDF and creates AlayaCare client",
                   "markdownDescription":  null,
@@ -151,19 +151,19 @@
                                                                }
                                                            ],
                                     "stepTitle":  "Confirm Details",
-                                    "content":  "Please review the extracted client data before creating in AlayaCare:\n\n**Name:** {{Steps.Extract_Client_Data.value.first_name}} {{Steps.Extract_Client_Data.value.last_name}}\n**Gender:** {{Steps.Extract_Client_Data.value.gender}}\n**Date of Birth:** {{Steps.Extract_Client_Data.value.birthday}}\n**MAC ID:** {{Steps.Extract_Client_Data.value.external_id}}\n**Mobile:** {{Steps.Extract_Client_Data.value.phone_personal}}\n**Home Phone:** {{Steps.Extract_Client_Data.value.phone_main}}\n**Email:** {{Steps.Extract_Client_Data.value.email}}\n**Address:** {{Steps.Extract_Client_Data.value.address}}, {{Steps.Extract_Client_Data.value.city}} {{Steps.Extract_Client_Data.value.state}} {{Steps.Extract_Client_Data.value.zip}}\n**Medicare:** {{Steps.Extract_Client_Data.value.health_card}}\n\nClick Approve to create the client in AlayaCare UAT, or Deny to cancel.",
+                                    "content":  "Client data extracted from PDF. Review the JSON above and click Approve to create the client in AlayaCare UAT, or Deny to cancel.",
                                     "approvalRequestId":  "fb37957f-15ff-410d-ac48-95e2ce0656c3"
                                 },
                                 {
-                                    "id":  "3646a550-71a7-4a7f-bbb1-f56fc7dbb766",
-                                    "stepType":  "sdkStep",
+                                    "id":  "166001d4-ab49-4273-bc8a-a4aad0a5c786",
+                                    "stepType":  "pythonStep",
                                     "position":  {
                                                      "x":  "12",
                                                      "y":  "620"
                                                  },
                                     "handles":  [
                                                     {
-                                                        "uuid":  "3c9fae4d-11fd-4431-9d31-9ec9f1d01350",
+                                                        "uuid":  "507a9588-9ebc-4f1d-86d4-296c1e9ad3f9",
                                                         "type":  "target",
                                                         "label":  "",
                                                         "tooltip":  "",
@@ -171,7 +171,7 @@
                                                         "y":  0
                                                     },
                                                     {
-                                                        "uuid":  "7043e727-ea3d-42cf-bdd0-771d579ed512",
+                                                        "uuid":  "f74e050e-754e-4614-930a-2af4a0da1148",
                                                         "type":  "source",
                                                         "label":  "",
                                                         "tooltip":  "",
@@ -183,78 +183,11 @@
                                                                {
                                                                    "parentId":  "1e7adde2-4783-4597-afca-e3594ea14233",
                                                                    "parentHandleId":  "32178109-ef4e-4299-9fad-51e8092a694d",
-                                                                   "handleId":  "3c9fae4d-11fd-4431-9d31-9ec9f1d01350"
+                                                                   "handleId":  "507a9588-9ebc-4f1d-86d4-296c1e9ad3f9"
                                                                }
                                                            ],
-                                    "stepTitle":  "Create Client"
-                                },
-                                {
-                                    "id":  "7f431c6f-3671-4111-9384-7cd13822fa50",
-                                    "stepType":  "sdkStep",
-                                    "position":  {
-                                                     "x":  "12",
-                                                     "y":  "820"
-                                                 },
-                                    "handles":  [
-                                                    {
-                                                        "uuid":  "aae26039-912c-487c-b825-850275f58602",
-                                                        "type":  "target",
-                                                        "label":  "",
-                                                        "tooltip":  "",
-                                                        "x":  0,
-                                                        "y":  0
-                                                    },
-                                                    {
-                                                        "uuid":  "af1ebead-d529-4715-ac0a-f4d12676433a",
-                                                        "type":  "source",
-                                                        "label":  "",
-                                                        "tooltip":  "",
-                                                        "x":  0,
-                                                        "y":  0
-                                                    }
-                                                ],
-                                    "dependenciesObject":  [
-                                                               {
-                                                                   "parentId":  "3646a550-71a7-4a7f-bbb1-f56fc7dbb766",
-                                                                   "parentHandleId":  "7043e727-ea3d-42cf-bdd0-771d579ed512",
-                                                                   "handleId":  "aae26039-912c-487c-b825-850275f58602"
-                                                               }
-                                                           ],
-                                    "stepTitle":  "Update Demographics"
-                                },
-                                {
-                                    "id":  "dada0abe-488f-42a2-b846-8e7c280b25fd",
-                                    "stepType":  "sdkStep",
-                                    "position":  {
-                                                     "x":  "12",
-                                                     "y":  "1020"
-                                                 },
-                                    "handles":  [
-                                                    {
-                                                        "uuid":  "95797342-02ac-4dff-8856-3eb8178e8d90",
-                                                        "type":  "target",
-                                                        "label":  "",
-                                                        "tooltip":  "",
-                                                        "x":  0,
-                                                        "y":  0
-                                                    },
-                                                    {
-                                                        "uuid":  "fafdd1e9-1b60-4f0d-addb-e0e57dd016b7",
-                                                        "type":  "source",
-                                                        "label":  "",
-                                                        "tooltip":  "",
-                                                        "x":  0,
-                                                        "y":  0
-                                                    }
-                                                ],
-                                    "dependenciesObject":  [
-                                                               {
-                                                                   "parentId":  "7f431c6f-3671-4111-9384-7cd13822fa50",
-                                                                   "parentHandleId":  "af1ebead-d529-4715-ac0a-f4d12676433a",
-                                                                   "handleId":  "95797342-02ac-4dff-8856-3eb8178e8d90"
-                                                               }
-                                                           ],
-                                    "stepTitle":  "Create Contact"
+                                    "stepTitle":  "Create AlayaCare Client",
+                                    "pythonCodeBlockId":  "aee58bb1-23e4-4542-8c28-d8cf57c4387c"
                                 },
                                 {
                                     "id":  "ff8fee36-40c7-41b1-9f19-41fbfe57cdf7",
@@ -283,8 +216,8 @@
                                                 ],
                                     "dependenciesObject":  [
                                                                {
-                                                                   "parentId":  "dada0abe-488f-42a2-b846-8e7c280b25fd",
-                                                                   "parentHandleId":  "fafdd1e9-1b60-4f0d-addb-e0e57dd016b7",
+                                                                   "parentId":  "166001d4-ab49-4273-bc8a-a4aad0a5c786",
+                                                                   "parentHandleId":  "f74e050e-754e-4614-930a-2af4a0da1148",
                                                                    "handleId":  "317da9b1-af64-4415-8c9d-4a24530d73b8"
                                                                },
                                                                {
@@ -328,7 +261,14 @@
                    }
                ],
     "memories":  null,
-    "pythonCodeBlocks":  null,
+    "pythonCodeBlocks":  [
+                             {
+                                 "id":  "aee58bb1-23e4-4542-8c28-d8cf57c4387c",
+                                 "code":  "import requests\nimport json\n\nALAYACARE_BASE_URL = \"https://asa.uat.alayacare.com/ext/api/v2\"\nAUTH = \"Basic PLACEHOLDER_ALAYACARE_BASE64\"\nHEADERS = {\"Authorization\": AUTH, \"Content-Type\": \"application/json\"}\n\ntry:\n    client_data = json.loads(input)\nexcept Exception as e:\n    print(f\"Error parsing input: {e}\")\n    print(f\"Raw input: {repr(input)}\")\n    raise\n\n# Step 1: Create Client\nr1 = requests.post(f\"{ALAYACARE_BASE_URL}/patients/clients\", headers=HEADERS, json={\n    \"demographics\": {\"first_name\": client_data[\"first_name\"], \"last_name\": client_data[\"last_name\"], \"gender\": client_data[\"gender\"]},\n    \"external_id\": client_data[\"external_id\"], \"language\": \"en\", \"timezone\": \"Australia/Adelaide\"\n})\nprint(f\"Create client: {r1.status_code} {r1.text}\")\nclient_id = r1.json().get(\"id\") if r1.ok else None\n\n# Step 2: Update Demographics\nif client_id:\n    r2 = requests.put(f\"{ALAYACARE_BASE_URL}/patients/clients/{client_id}\", headers=HEADERS, json={\n        \"demographics\": {\n            \"birthday\": client_data.get(\"birthday\",\"\"), \"phone_personal\": client_data.get(\"phone_personal\",\"\"),\n            \"phone_main\": client_data.get(\"phone_main\",\"\"), \"email\": client_data.get(\"email\",\"\"),\n            \"address\": client_data.get(\"address\",\"\"), \"city\": client_data.get(\"city\",\"\"),\n            \"state\": client_data.get(\"state\",\"\"), \"zip\": client_data.get(\"zip\",\"\"),\n            \"country\": \"AU\", \"health_card\": client_data.get(\"health_card\",\"\")\n        }\n    })\n    print(f\"Update demographics: {r2.status_code} {r2.text}\")\n\n# Step 3: Create Contact\nif client_id:\n    r3 = requests.post(f\"{ALAYACARE_BASE_URL}/contacts\", headers=HEADERS, json={\n        \"client_id\": client_id, \"contact_type\": \"Personal\", \"relationship\": \"Self\",\n        \"demographics\": {\n            \"first_name\": client_data[\"first_name\"], \"last_name\": client_data[\"last_name\"],\n            \"phone_personal\": client_data.get(\"phone_personal\",\"\"), \"phone_main\": client_data.get(\"phone_main\",\"\"),\n            \"email\": client_data.get(\"email\",\"\"), \"address\": client_data.get(\"address\",\"\"),\n            \"city\": client_data.get(\"city\",\"\"), \"state\": client_data.get(\"state\",\"\"), \"zip\": client_data.get(\"zip\",\"\")\n        }\n    })\n    print(f\"Create contact: {r3.status_code} {r3.text}\")\n\nif client_id:\n    print(f\"SUCCESS: AlayaCare client ID={client_id}, Portal: https://asa.uat.alayacare.com/patients/clients/{client_id}/details\")\nelse:\n    print(\"FAILED: Could not create client\")",
+                                 "isStructuredOutputEnabled":  false,
+                                 "includeParsedFiles":  false
+                             }
+                         ],
     "routers":  null,
     "approvalRequests":  [
                              {
@@ -347,51 +287,5 @@
     "subAgents":  null,
     "deployment":  null,
     "interfaces":  null,
-    "sdkSteps":  [
-                     {
-                         "id":  "3646a550-71a7-4a7f-bbb1-f56fc7dbb766",
-                         "name":  "Create Client",
-                         "sdkStepType":  "HttpRequest",
-                         "category":  "Actions",
-                         "group":  "Http",
-                         "version":  "1.0",
-                         "stepParameters":  "{\"body\":\"{\\\"demographics\\\":{\\\"first_name\\\":\\\"{{Steps.Extract_Client_Data.value.first_name}}\\\",\\\"last_name\\\":\\\"{{Steps.Extract_Client_Data.value.last_name}}\\\",\\\"gender\\\":\\\"{{Steps.Extract_Client_Data.value.gender}}\\\"}}\",\"method\":\"POST\",\"url\":\"https://asa.uat.alayacare.com/ext/api/v2/patients/clients\",\"headers\":{\"Authorization\":\"Basic PLACEHOLDER_ALAYACARE_BASE64\"},\"contentType\":0}",
-                         "credentialReferences":  [
-
-                                                  ],
-                         "supportedCredentialTypes":  [
-
-                                                      ]
-                     },
-                     {
-                         "id":  "7f431c6f-3671-4111-9384-7cd13822fa50",
-                         "name":  "Update Demographics",
-                         "sdkStepType":  "HttpRequest",
-                         "category":  "Actions",
-                         "group":  "Http",
-                         "version":  "1.0",
-                         "stepParameters":  "{\"body\":\"{\\\"external_id\\\":\\\"{{Steps.Extract_Client_Data.value.external_id}}\\\",\\\"timezone\\\":\\\"Australia/Adelaide\\\",\\\"language\\\":\\\"en\\\",\\\"demographics\\\":{\\\"birthday\\\":\\\"{{Steps.Extract_Client_Data.value.birthday}}\\\",\\\"phone_personal\\\":\\\"{{Steps.Extract_Client_Data.value.phone_personal}}\\\",\\\"phone_main\\\":\\\"{{Steps.Extract_Client_Data.value.phone_main}}\\\",\\\"email\\\":\\\"{{Steps.Extract_Client_Data.value.email}}\\\",\\\"address\\\":\\\"{{Steps.Extract_Client_Data.value.address}}\\\",\\\"city\\\":\\\"{{Steps.Extract_Client_Data.value.city}}\\\",\\\"state\\\":\\\"{{Steps.Extract_Client_Data.value.state}}\\\",\\\"zip\\\":\\\"{{Steps.Extract_Client_Data.value.zip}}\\\",\\\"country\\\":\\\"AU\\\",\\\"health_card\\\":\\\"{{Steps.Extract_Client_Data.value.health_card}}\\\"}}\",\"method\":\"PUT\",\"url\":\"https://asa.uat.alayacare.com/ext/api/v2/patients/clients/{{Steps.Create_Client.output.body.id}}\",\"headers\":{\"Authorization\":\"Basic PLACEHOLDER_ALAYACARE_BASE64\"},\"contentType\":0}",
-                         "credentialReferences":  [
-
-                                                  ],
-                         "supportedCredentialTypes":  [
-
-                                                      ]
-                     },
-                     {
-                         "id":  "dada0abe-488f-42a2-b846-8e7c280b25fd",
-                         "name":  "Create Contact",
-                         "sdkStepType":  "HttpRequest",
-                         "category":  "Actions",
-                         "group":  "Http",
-                         "version":  "1.0",
-                         "stepParameters":  "{\"body\":\"{\\\"client_id\\\":{{Steps.Create_Client.output.body.id}},\\\"contact_type\\\":\\\"Personal\\\",\\\"relationship\\\":\\\"Self\\\",\\\"demographics\\\":{\\\"first_name\\\":\\\"{{Steps.Extract_Client_Data.value.first_name}}\\\",\\\"last_name\\\":\\\"{{Steps.Extract_Client_Data.value.last_name}}\\\",\\\"phone_personal\\\":\\\"{{Steps.Extract_Client_Data.value.phone_personal}}\\\",\\\"phone_main\\\":\\\"{{Steps.Extract_Client_Data.value.phone_main}}\\\",\\\"email\\\":\\\"{{Steps.Extract_Client_Data.value.email}}\\\",\\\"address\\\":\\\"{{Steps.Extract_Client_Data.value.address}}\\\",\\\"city\\\":\\\"{{Steps.Extract_Client_Data.value.city}}\\\",\\\"state\\\":\\\"{{Steps.Extract_Client_Data.value.state}}\\\",\\\"zip\\\":\\\"{{Steps.Extract_Client_Data.value.zip}}\\\"}}\",\"method\":\"POST\",\"url\":\"https://asa.uat.alayacare.com/ext/api/v2/contacts\",\"headers\":{\"Authorization\":\"Basic PLACEHOLDER_ALAYACARE_BASE64\"},\"contentType\":0}",
-                         "credentialReferences":  [
-
-                                                  ],
-                         "supportedCredentialTypes":  [
-
-                                                      ]
-                     }
-                 ]
+    "sdkSteps":  null
 }
