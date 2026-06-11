@@ -6,3 +6,5 @@ __pycache__/
 *.pyo
 .venv/
 venv/
+
+*_deploy.json
