@@ -1,7 +1,7 @@
 ﻿{
     "available":  true,
     "metadata":  {
-                     "id":  "18c2c681-2afa-4d04-844b-75c0ea554b46",
+                     "id":  "672bc04a-6f6f-4ece-bd79-e11208b2246a",
                      "exportVersion":  "20260603123638_AddStatusToClaudeGuardrailEvaluations",
                      "tagline":  "Create AlayaCare client from MAC referral PDF",
                      "agentDescription":  "Extracts client data from MAC PDF and creates AlayaCare client via 3 API calls",
@@ -21,9 +21,9 @@
                      "country":  null
                  },
     "agent":  {
-                  "id":  "18c2c681-2afa-4d04-844b-75c0ea554b46",
-                  "name":  "Create AlayaCare Client from MAC PDF v20",
-                  "executionName":  "create_alayacare_client_mac_pdf_v20",
+                  "id":  "672bc04a-6f6f-4ece-bd79-e11208b2246a",
+                  "name":  "Create AlayaCare Client from MAC PDF v21",
+                  "executionName":  "create_alayacare_client_mac_pdf_v21",
                   "agentIcon":  null,
                   "agentDescription":  "Extracts client data from MAC PDF and creates AlayaCare client",
                   "markdownDescription":  null,
@@ -216,8 +216,8 @@
                                                 ],
                                     "dependenciesObject":  [
                                                                {
-                                                                   "parentId":  "0d38e5d8-89a9-4649-adbc-f763eee073fa",
-                                                                   "parentHandleId":  "576d7781-97f8-4404-8602-41328359f86e",
+                                                                   "parentId":  "2c3916f1-0f42-4298-a6c5-8247e26641d6",
+                                                                   "parentHandleId":  "f4d31281-45de-492b-953d-ce96869edf6d",
                                                                    "handleId":  "b8498ad2-9986-41a8-adf6-cbc441f5d7d0"
                                                                },
                                                                {
@@ -227,6 +227,56 @@
                                                                }
                                                            ],
                                     "stepTitle":  "Output"
+                                },
+                                {
+                                    "id":  "2c3916f1-0f42-4298-a6c5-8247e26641d6",
+                                    "stepType":  "AIOperation",
+                                    "position":  {
+                                                     "x":  "400",
+                                                     "y":  "620"
+                                                 },
+                                    "handles":  [
+                                                    {
+                                                        "uuid":  "9d081d3c-12f3-4d7f-afe5-fbf99c6a2c1f",
+                                                        "type":  "target",
+                                                        "label":  "",
+                                                        "tooltip":  "",
+                                                        "x":  0,
+                                                        "y":  0
+                                                    },
+                                                    {
+                                                        "uuid":  "f4d31281-45de-492b-953d-ce96869edf6d",
+                                                        "type":  "source",
+                                                        "label":  "",
+                                                        "tooltip":  "",
+                                                        "x":  0,
+                                                        "y":  0
+                                                    }
+                                                ],
+                                    "dependenciesObject":  [
+                                                               {
+                                                                   "parentId":  "2011ea35-25be-4837-81db-420b5169e404",
+                                                                   "parentHandleId":  "397b5830-ad81-4d38-84a9-ac6145661a21",
+                                                                   "handleId":  "9d081d3c-12f3-4d7f-afe5-fbf99c6a2c1f"
+                                                               }
+                                                           ],
+                                    "temperature":  1,
+                                    "includeDateTimeContext":  true,
+                                    "includeUserDetailsContext":  true,
+                                    "modelId":  "8114e49e-9ff1-4e8a-85f4-79664a3b3763",
+                                    "toolIds":  [
+
+                                                ],
+                                    "toolParamsJson":  "{}",
+                                    "promptId":  "852bf268-05f1-4662-8fe1-d855e8d2b203",
+                                    "stepTitle":  "Notify User",
+                                    "useUserInput":  false,
+                                    "aiOperationStepIncludeChatHistory":  false,
+                                    "aiOperationStepIncludeAttachments":  false,
+                                    "aiOperationStepUseDataSource":  false,
+                                    "selectedDataSources":  [
+
+                                                            ]
                                 }
                             ],
                   "behaviours":  null,
@@ -242,12 +292,32 @@
                         "versionChangeDescription":  "",
                         "promptMessage":  "You are extracting client data from a My Aged Care (MAC) referral PDF for the AlayaCare client management system.\n\nExtract the following fields:\n- first_name: given/first name\n- last_name: family/last name\n- gender: M for Male, F for Female, O for Other/Unknown\n- birthday: date of birth in YYYY-MM-DD format (convert from DD/MM/YYYY on PDF)\n- phone_personal: mobile phone number (empty string if not provided)\n- phone_main: home/landline phone number (empty string if not provided)\n- email: email address (empty string if not provided)\n- address: street number and name only (e.g. 14 Smith Street)\n- city: suburb name\n- state: state abbreviation (e.g. SA, NSW, VIC)\n- zip: 4-digit postcode as a string\n- external_id: the MAC Aged Care ID starting with AC (e.g. AC27413301)\n- health_card: Medicare card number (empty string if not provided)\n\nUse empty string for any optional fields not found in the PDF.",
                         "isAgentSpecific":  true
+                    },
+                    {
+                        "id":  "852bf268-05f1-4662-8fe1-d855e8d2b203",
+                        "name":  "Notify User System Prompt",
+                        "versionChangeDescription":  "",
+                        "promptMessage":  "The user has just approved creating a client record in AlayaCare. The API request has been sent.\n\nGiven the JSON client data below, generate a clear completion message for the staff member. Include:\n- Full name and MAC Aged Care ID\n- Date of birth, gender\n- Address and phone number\n- Medicare card number (if present)\n- A confirmation that the record has been submitted to AlayaCare UAT\n- The AlayaCare portal URL to verify: https://asa.uat.alayacare.com/patients/clients\n\nKeep it short and professional. Use plain text, no markdown.",
+                        "isAgentSpecific":  true
                     }
                 ],
     "tools":  null,
     "models":  [
                    {
                        "id":  "8973ffcd-71c9-422d-ab2e-233f8d0e1759",
+                       "displayName":  "Gemini 3.1 Flash Lite",
+                       "modelName":  "gemini-2.0-flash-lite",
+                       "promptId":  null,
+                       "systemPromptDefinition":  null,
+                       "inputType":  "text",
+                       "provider":  "Google",
+                       "sourceType":  "library",
+                       "libraryModelId":  "d2a7c4e1-8f3b-4d6e-9a1c-5b7f0e2d4a8c",
+                       "author":  "Google",
+                       "category":  "Multimodal"
+                   },
+                   {
+                       "id":  "8114e49e-9ff1-4e8a-85f4-79664a3b3763",
                        "displayName":  "Gemini 3.1 Flash Lite",
                        "modelName":  "gemini-2.0-flash-lite",
                        "promptId":  null,
