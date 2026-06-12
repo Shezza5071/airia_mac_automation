@@ -1,7 +1,7 @@
 ﻿{
     "available":  true,
     "metadata":  {
-                     "id":  "f69d47df-37cb-4953-ba0e-29d19d601bfb",
+                     "id":  "97a8d34e-2958-4cc2-b0d6-f9211bdaf008",
                      "exportVersion":  "20260603123638_AddStatusToClaudeGuardrailEvaluations",
                      "tagline":  "Create AlayaCare client from MAC referral PDF",
                      "agentDescription":  "Extracts client data from MAC PDF and creates AlayaCare client via 3 API calls",
@@ -21,9 +21,9 @@
                      "country":  null
                  },
     "agent":  {
-                  "id":  "f69d47df-37cb-4953-ba0e-29d19d601bfb",
-                  "name":  "Create AlayaCare Client from MAC PDF v22",
-                  "executionName":  "create_alayacare_client_mac_pdf_v22",
+                  "id":  "97a8d34e-2958-4cc2-b0d6-f9211bdaf008",
+                  "name":  "Create AlayaCare Client from MAC PDF v23",
+                  "executionName":  "create_alayacare_client_mac_pdf_v23",
                   "agentIcon":  null,
                   "agentDescription":  "Extracts client data from MAC PDF and creates AlayaCare client",
                   "markdownDescription":  null,
@@ -155,41 +155,6 @@
                                     "approvalRequestId":  "b6b408ed-ab04-4f38-b274-634419b4e508"
                                 },
                                 {
-                                    "id":  "0d38e5d8-89a9-4649-adbc-f763eee073fa",
-                                    "stepType":  "pythonStep",
-                                    "position":  {
-                                                     "x":  "12",
-                                                     "y":  "620"
-                                                 },
-                                    "handles":  [
-                                                    {
-                                                        "uuid":  "f6ed5cb8-a8e2-4ebe-9bb2-6596b7c95cee",
-                                                        "type":  "target",
-                                                        "label":  "",
-                                                        "tooltip":  "",
-                                                        "x":  0,
-                                                        "y":  0
-                                                    },
-                                                    {
-                                                        "uuid":  "576d7781-97f8-4404-8602-41328359f86e",
-                                                        "type":  "source",
-                                                        "label":  "",
-                                                        "tooltip":  "",
-                                                        "x":  0,
-                                                        "y":  0
-                                                    }
-                                                ],
-                                    "dependenciesObject":  [
-                                                               {
-                                                                   "parentId":  "2011ea35-25be-4837-81db-420b5169e404",
-                                                                   "parentHandleId":  "397b5830-ad81-4d38-84a9-ac6145661a21",
-                                                                   "handleId":  "f6ed5cb8-a8e2-4ebe-9bb2-6596b7c95cee"
-                                                               }
-                                                           ],
-                                    "stepTitle":  "Create AlayaCare Client",
-                                    "pythonCodeBlockId":  "86c8b9fe-4453-4dbf-9f21-e5064cc32246"
-                                },
-                                {
                                     "id":  "c65309bd-0d14-48d7-b3da-d0e6cb6ff95e",
                                     "stepType":  "outputStep",
                                     "position":  {
@@ -216,8 +181,8 @@
                                                 ],
                                     "dependenciesObject":  [
                                                                {
-                                                                   "parentId":  "2c3916f1-0f42-4298-a6c5-8247e26641d6",
-                                                                   "parentHandleId":  "f4d31281-45de-492b-953d-ce96869edf6d",
+                                                                   "parentId":  "05243a80-686b-4977-ac1a-9caec4935d3f",
+                                                                   "parentHandleId":  "8f80e70a-10ed-416f-b555-f40b1702a185",
                                                                    "handleId":  "b8498ad2-9986-41a8-adf6-cbc441f5d7d0"
                                                                },
                                                                {
@@ -229,15 +194,15 @@
                                     "stepTitle":  "Output"
                                 },
                                 {
-                                    "id":  "2c3916f1-0f42-4298-a6c5-8247e26641d6",
+                                    "id":  "05243a80-686b-4977-ac1a-9caec4935d3f",
                                     "stepType":  "AIOperation",
                                     "position":  {
-                                                     "x":  "400",
+                                                     "x":  "12",
                                                      "y":  "620"
                                                  },
                                     "handles":  [
                                                     {
-                                                        "uuid":  "9d081d3c-12f3-4d7f-afe5-fbf99c6a2c1f",
+                                                        "uuid":  "5fc7c496-73d4-4cf8-a68b-c7025cff2faf",
                                                         "type":  "target",
                                                         "label":  "",
                                                         "tooltip":  "",
@@ -245,7 +210,7 @@
                                                         "y":  0
                                                     },
                                                     {
-                                                        "uuid":  "f4d31281-45de-492b-953d-ce96869edf6d",
+                                                        "uuid":  "8f80e70a-10ed-416f-b555-f40b1702a185",
                                                         "type":  "source",
                                                         "label":  "",
                                                         "tooltip":  "",
@@ -257,19 +222,21 @@
                                                                {
                                                                    "parentId":  "2011ea35-25be-4837-81db-420b5169e404",
                                                                    "parentHandleId":  "397b5830-ad81-4d38-84a9-ac6145661a21",
-                                                                   "handleId":  "9d081d3c-12f3-4d7f-afe5-fbf99c6a2c1f"
+                                                                   "handleId":  "5fc7c496-73d4-4cf8-a68b-c7025cff2faf"
                                                                }
                                                            ],
                                     "temperature":  1,
-                                    "includeDateTimeContext":  true,
-                                    "includeUserDetailsContext":  true,
-                                    "modelId":  "8114e49e-9ff1-4e8a-85f4-79664a3b3763",
+                                    "includeDateTimeContext":  false,
+                                    "includeUserDetailsContext":  false,
+                                    "modelId":  "89ec6089-6cc1-4f4e-b922-d3f57946ea42",
                                     "toolIds":  [
-
+                                                    "ab34393c-c6d0-4e4c-a34a-4796deac5af6",
+                                                    "4afdfe2a-9124-4fa9-bb3e-f34e8377cfc5",
+                                                    "63ddd423-14c9-4d7a-9168-28dbcd104b81"
                                                 ],
                                     "toolParamsJson":  "{}",
-                                    "promptId":  "47be5324-005c-4862-81ca-db4d2d37e37b",
-                                    "stepTitle":  "Notify User",
+                                    "promptId":  "bcfd0d6e-4857-4827-9059-cc845d5ef767",
+                                    "stepTitle":  "Create AlayaCare Client",
                                     "useUserInput":  false,
                                     "aiOperationStepIncludeChatHistory":  false,
                                     "aiOperationStepIncludeAttachments":  false,
@@ -294,14 +261,129 @@
                         "isAgentSpecific":  true
                     },
                     {
-                        "id":  "47be5324-005c-4862-81ca-db4d2d37e37b",
-                        "name":  "Notify User System Prompt v2",
+                        "id":  "bcfd0d6e-4857-4827-9059-cc845d5ef767",
+                        "name":  "Create AlayaCare Client System Prompt v23",
                         "versionChangeDescription":  "",
-                        "promptMessage":  "You confirm that a client record has been submitted to AlayaCare. Output a plain-text summary with exactly these fields on separate lines:\n\nAged Care ID: [external_id field, e.g. AC47957816]\nName: [first_name] [last_name]\nDate of Birth: [birthday]\nGender: [gender — write Male/Female/Other, not M/F]\nPhone (Home): [phone_main]\nPhone (Mobile): [phone_personal]\nEmail: [email]\nAddress: [address], [city] [state] [zip]\nMedicare: [health_card]\n\nThen on a new line: \"Record submitted to AlayaCare UAT. Check the portal to confirm the client ID once created: https://asa.uat.alayacare.com\"\n\nUse \"not provided\" for any empty fields. No markdown, no bullet points.",
-                        "isAgentSpecific":  true
+                        "isAgentSpecific":  true,
+                        "promptMessage":  "You create client records in AlayaCare UAT using the available tools. The client data is provided as JSON.\n\nSteps:\n1. Call create_alayacare_client_v23 with request_body = the full JSON for POST /patients/clients:\n   {\"demographics\":{\"first_name\":\"...\",\"last_name\":\"...\",\"gender\":\"M/F\"},\"external_id\":\"AC...\",\"language\":\"en\",\"timezone\":\"Australia/Adelaide\"}\n\n2. If the response status is 201: extract the \"id\" field (the AlayaCare client ID).\n   If the response status is 409: call get_alayacare_client_v23 using the external_id to find the existing client ID.\n\n3. Call get_alayacare_client_v23 with the client_id to retrieve the full AlayaCare record.\n\n4. Call update_alayacare_demographics_v23 with client_id and request_body = full demographics JSON:\n   {\"demographics\":{\"birthday\":\"YYYY-MM-DD\",\"phone_personal\":\"...\",\"phone_main\":\"...\",\"email\":\"...\",\"address\":\"...\",\"city\":\"...\",\"state\":\"...\",\"zip\":\"...\",\"country\":\"AU\",\"health_card\":\"...\"}}\n\n5. Output this exact summary (plain text, no markdown):\n\nAlayaCare Client ID: [numeric id, e.g. 7162]\nAged Care ID: [external_id, e.g. AC47957816]\nName: [first_name] [last_name]\nDate of Birth: [birthday]\nGender: [Male/Female/Other]\nPhone (Home): [phone_main or not provided]\nPhone (Mobile): [phone_personal or not provided]\nEmail: [email or not provided]\nAddress: [address], [city] [state] [zip]\nMedicare: [health_card or not provided]\nPortal: https://asa.uat.alayacare.com/patients/clients/[client_id]/details\n\nStatus: [Created successfully / Already existed - record retrieved]"
                     }
                 ],
-    "tools":  null,
+    "tools":  [
+                  {
+                      "id":  "ab34393c-c6d0-4e4c-a34a-4796deac5af6",
+                      "name":  "create_alayacare_client_v23",
+                      "standardizedName":  "create_alayacare_client_v23",
+                      "toolDescription":  "Create a new client record in AlayaCare UAT via POST /patients/clients",
+                      "purpose":  "Create AlayaCare client",
+                      "toolType":  "custom",
+                      "apiEndpoint":  "https://asa.uat.alayacare.com/ext/api/v2/patients/clients",
+                      "methodType":  "POST",
+                      "bodyType":  "Json",
+                      "body":  "{{request_body}}",
+                      "headersDefinition":  [
+                                                {
+                                                    "key":  "Authorization",
+                                                    "value":  "Basic PLACEHOLDER_ALAYACARE_BASE64",
+                                                    "sensitive":  true
+                                                },
+                                                {
+                                                    "key":  "Content-Type",
+                                                    "value":  "application/json",
+                                                    "sensitive":  false
+                                                }
+                                            ],
+                      "credentialsSourceType":  null,
+                      "credentialsDefinition":  null,
+                      "useUserCredentials":  false,
+                      "schemaDefinition":  "{\"type\":\"object\",\"properties\":{\"request_body\":{\"type\":\"string\",\"description\":\"Full JSON body. Example: {\\\"demographics\\\":{\\\"first_name\\\":\\\"Jane\\\",\\\"last_name\\\":\\\"Smith\\\",\\\"gender\\\":\\\"F\\\"},\\\"external_id\\\":\\\"AC12345678\\\",\\\"language\\\":\\\"en\\\",\\\"timezone\\\":\\\"Australia/Adelaide\\\"}\"}},\"required\":[\"request_body\"]}",
+                      "parametersDefinition":  [
+                                                   {
+                                                       "name":  "request_body",
+                                                       "parameterType":  "body",
+                                                       "parameterDescription":  "Full JSON body for POST /patients/clients including demographics and external_id",
+                                                       "default":  ""
+                                                   }
+                                               ]
+                  },
+                  {
+                      "id":  "4afdfe2a-9124-4fa9-bb3e-f34e8377cfc5",
+                      "name":  "get_alayacare_client_v23",
+                      "standardizedName":  "get_alayacare_client_v23",
+                      "toolDescription":  "Retrieve an AlayaCare client record by numeric client ID via GET /patients/clients/{client_id}",
+                      "purpose":  "Fetch AlayaCare client details",
+                      "toolType":  "custom",
+                      "apiEndpoint":  "https://asa.uat.alayacare.com/ext/api/v2/patients/clients/{{client_id}}",
+                      "methodType":  "GET",
+                      "bodyType":  "Json",
+                      "body":  "",
+                      "headersDefinition":  [
+                                                {
+                                                    "key":  "Authorization",
+                                                    "value":  "Basic PLACEHOLDER_ALAYACARE_BASE64",
+                                                    "sensitive":  true
+                                                },
+                                                {
+                                                    "key":  "Content-Type",
+                                                    "value":  "application/json",
+                                                    "sensitive":  false
+                                                }
+                                            ],
+                      "credentialsSourceType":  null,
+                      "credentialsDefinition":  null,
+                      "useUserCredentials":  false,
+                      "schemaDefinition":  "{\"type\":\"object\",\"properties\":{\"client_id\":{\"type\":\"string\",\"description\":\"AlayaCare numeric client ID returned by the create call, e.g. 7162\"}},\"required\":[\"client_id\"]}",
+                      "parametersDefinition":  [
+                                                   {
+                                                       "name":  "client_id",
+                                                       "parameterType":  "path",
+                                                       "parameterDescription":  "AlayaCare numeric client ID (e.g. 7162)",
+                                                       "default":  ""
+                                                   }
+                                               ]
+                  },
+                  {
+                      "id":  "63ddd423-14c9-4d7a-9168-28dbcd104b81",
+                      "name":  "update_alayacare_demographics_v23",
+                      "standardizedName":  "update_alayacare_demographics_v23",
+                      "toolDescription":  "Update demographics for an AlayaCare client via PUT /patients/clients/{client_id}",
+                      "purpose":  "Update AlayaCare client demographics",
+                      "toolType":  "custom",
+                      "apiEndpoint":  "https://asa.uat.alayacare.com/ext/api/v2/patients/clients/{{client_id}}",
+                      "methodType":  "PUT",
+                      "bodyType":  "Json",
+                      "body":  "{{request_body}}",
+                      "headersDefinition":  [
+                                                {
+                                                    "key":  "Authorization",
+                                                    "value":  "Basic PLACEHOLDER_ALAYACARE_BASE64",
+                                                    "sensitive":  true
+                                                },
+                                                {
+                                                    "key":  "Content-Type",
+                                                    "value":  "application/json",
+                                                    "sensitive":  false
+                                                }
+                                            ],
+                      "credentialsSourceType":  null,
+                      "credentialsDefinition":  null,
+                      "useUserCredentials":  false,
+                      "schemaDefinition":  "{\"type\":\"object\",\"properties\":{\"client_id\":{\"type\":\"string\",\"description\":\"AlayaCare numeric client ID\"},\"request_body\":{\"type\":\"string\",\"description\":\"JSON body. Example: {\\\"demographics\\\":{\\\"birthday\\\":\\\"1949-12-18\\\",\\\"phone_main\\\":\\\"0883383824\\\",\\\"email\\\":\\\"\\\",\\\"address\\\":\\\"13C DERWENT Avenue\\\",\\\"city\\\":\\\"MAGILL\\\",\\\"state\\\":\\\"SA\\\",\\\"zip\\\":\\\"5072\\\",\\\"country\\\":\\\"AU\\\",\\\"health_card\\\":\\\"41662458441\\\"}}\"}},\"required\":[\"client_id\",\"request_body\"]}",
+                      "parametersDefinition":  [
+                                                   {
+                                                       "name":  "client_id",
+                                                       "parameterType":  "path",
+                                                       "parameterDescription":  "AlayaCare numeric client ID",
+                                                       "default":  ""
+                                                   },
+                                                   {
+                                                       "name":  "request_body",
+                                                       "parameterType":  "body",
+                                                       "parameterDescription":  "Full JSON body with demographics object",
+                                                       "default":  ""
+                                                   }
+                                               ]
+                  }
+              ],
     "models":  [
                    {
                        "id":  "8973ffcd-71c9-422d-ab2e-233f8d0e1759",
@@ -317,7 +399,7 @@
                        "category":  "Multimodal"
                    },
                    {
-                       "id":  "8114e49e-9ff1-4e8a-85f4-79664a3b3763",
+                       "id":  "89ec6089-6cc1-4f4e-b922-d3f57946ea42",
                        "displayName":  "Gemini 3.1 Flash Lite",
                        "modelName":  "gemini-2.0-flash-lite",
                        "promptId":  null,
