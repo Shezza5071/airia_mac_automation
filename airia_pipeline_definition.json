@@ -1,7 +1,7 @@
 ﻿{
     "available":  true,
     "metadata":  {
-                     "id":  "672bc04a-6f6f-4ece-bd79-e11208b2246a",
+                     "id":  "f69d47df-37cb-4953-ba0e-29d19d601bfb",
                      "exportVersion":  "20260603123638_AddStatusToClaudeGuardrailEvaluations",
                      "tagline":  "Create AlayaCare client from MAC referral PDF",
                      "agentDescription":  "Extracts client data from MAC PDF and creates AlayaCare client via 3 API calls",
@@ -21,9 +21,9 @@
                      "country":  null
                  },
     "agent":  {
-                  "id":  "672bc04a-6f6f-4ece-bd79-e11208b2246a",
-                  "name":  "Create AlayaCare Client from MAC PDF v21",
-                  "executionName":  "create_alayacare_client_mac_pdf_v21",
+                  "id":  "f69d47df-37cb-4953-ba0e-29d19d601bfb",
+                  "name":  "Create AlayaCare Client from MAC PDF v22",
+                  "executionName":  "create_alayacare_client_mac_pdf_v22",
                   "agentIcon":  null,
                   "agentDescription":  "Extracts client data from MAC PDF and creates AlayaCare client",
                   "markdownDescription":  null,
@@ -268,7 +268,7 @@
 
                                                 ],
                                     "toolParamsJson":  "{}",
-                                    "promptId":  "852bf268-05f1-4662-8fe1-d855e8d2b203",
+                                    "promptId":  "47be5324-005c-4862-81ca-db4d2d37e37b",
                                     "stepTitle":  "Notify User",
                                     "useUserInput":  false,
                                     "aiOperationStepIncludeChatHistory":  false,
@@ -294,10 +294,10 @@
                         "isAgentSpecific":  true
                     },
                     {
-                        "id":  "852bf268-05f1-4662-8fe1-d855e8d2b203",
-                        "name":  "Notify User System Prompt",
+                        "id":  "47be5324-005c-4862-81ca-db4d2d37e37b",
+                        "name":  "Notify User System Prompt v2",
                         "versionChangeDescription":  "",
-                        "promptMessage":  "The user has just approved creating a client record in AlayaCare. The API request has been sent.\n\nGiven the JSON client data below, generate a clear completion message for the staff member. Include:\n- Full name and MAC Aged Care ID\n- Date of birth, gender\n- Address and phone number\n- Medicare card number (if present)\n- A confirmation that the record has been submitted to AlayaCare UAT\n- The AlayaCare portal URL to verify: https://asa.uat.alayacare.com/patients/clients\n\nKeep it short and professional. Use plain text, no markdown.",
+                        "promptMessage":  "You confirm that a client record has been submitted to AlayaCare. Output a plain-text summary with exactly these fields on separate lines:\n\nAged Care ID: [external_id field, e.g. AC47957816]\nName: [first_name] [last_name]\nDate of Birth: [birthday]\nGender: [gender — write Male/Female/Other, not M/F]\nPhone (Home): [phone_main]\nPhone (Mobile): [phone_personal]\nEmail: [email]\nAddress: [address], [city] [state] [zip]\nMedicare: [health_card]\n\nThen on a new line: \"Record submitted to AlayaCare UAT. Check the portal to confirm the client ID once created: https://asa.uat.alayacare.com\"\n\nUse \"not provided\" for any empty fields. No markdown, no bullet points.",
                         "isAgentSpecific":  true
                     }
                 ],
