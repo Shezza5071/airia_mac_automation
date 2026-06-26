@@ -910,9 +910,9 @@ AlayaCare: Private residence, public rental</div>
   </div>
   <div id="sw-body">
     <div class="sw-teams">
-      <div class="sw-side"><div class="sw-abbr" id="sw-home-name">-</div><div class="sw-num" id="sw-home">-</div></div>
+      <div class="sw-side"><div class="sw-abbr">AUS</div><div class="sw-num" id="sw-home">-</div></div>
       <div class="sw-col">:</div>
-      <div class="sw-side"><div class="sw-abbr" id="sw-away-name">-</div><div class="sw-num" id="sw-away">-</div></div>
+      <div class="sw-side"><div class="sw-abbr">PAR</div><div class="sw-num" id="sw-away">-</div></div>
     </div>
     <div class="sw-state">
       <span class="sw-pill sp-pre" id="sw-pill">Loading...</span>
@@ -920,7 +920,7 @@ AlayaCare: Private residence, public rental</div>
     </div>
     <div class="sw-foot">
       <span class="sw-upd" id="sw-upd">Loading...</span>
-      <a href="https://www.google.com/search?q=fifa+world+cup+2026+live+score" target="_blank" class="sw-lnk">Full Score ↗</a>
+      <a href="https://www.espn.com.au/football/match/_/gameId/760469/australia-paraguay" target="_blank" class="sw-lnk">Full Score ↗</a>
     </div>
   </div>
 </div>
@@ -974,9 +974,9 @@ AlayaCare: Private residence, public rental</div>
     btn.textContent    = open ? '+' : '−';
   };
 
-  // Live Score — specific ESPN game 760471
+  // Live Score — AUS vs PAR · FIFA World Cup 2026 · ESPN game 760469
   (function() {
-    const SUMMARY = 'https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=760471';
+    const SUMMARY = 'https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=760469';
     const PROXIES = [
       u => 'https://corsproxy.io/?' + encodeURIComponent(u),
       u => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u),
@@ -995,8 +995,6 @@ AlayaCare: Private residence, public rental</div>
       if (!comp) return false;
       const [home, away] = comp.competitors || [];
       if (!home || !away) return false;
-      document.getElementById('sw-home-name').textContent = home?.team?.abbreviation || home?.team?.shortDisplayName || '?';
-      document.getElementById('sw-away-name').textContent = away?.team?.abbreviation || away?.team?.shortDisplayName || '?';
       document.getElementById('sw-home').textContent = home?.score ?? '-';
       document.getElementById('sw-away').textContent = away?.score ?? '-';
       const pill  = document.getElementById('sw-pill');
