@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAC to AlayaCare AI Integration | AnglicareSA</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:        #00326E;
+    --navy-light:  #335B8A;
+    --navy-dark:   #001E42;
+    --teal:        #009BA7;
+    --teal-light:  #0EBCC8;
+    --teal-pale:   rgba(0,155,167,0.15);
+    --teal-border: rgba(0,155,167,0.35);
+    --panel:       rgba(255,255,255,0.04);
+    --border:      rgba(255,255,255,0.09);
+    --white:       #FFFFFF;
+    --off-white:   rgba(255,255,255,0.85);
+    --muted:       rgba(255,255,255,0.50);
+    --gold:        #F5A623;
+    --green:       #3DAA6E;
+  }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #03101E;
+    overflow: hidden; height: 100vh; width: 100vw;
+    color: var(--white);
+  }
+
+  .slide {
+    position: absolute; inset: 0; display: none;
+    flex-direction: column; align-items: center; justify-content: center;
+    padding: 36px 64px 72px;
+    animation: fadeIn 0.35s ease;
+  }
+  .slide.active { display: flex; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* fixed chrome */
+  .logo-bar {
+    position: fixed; top: 18px; right: 24px;
+    font-size: 12px; font-weight: 700; color: var(--muted); z-index: 100;
+  }
+  .slide-num {
+    position: fixed; top: 18px; left: 24px;
+    font-size: 11px; color: var(--muted); z-index: 100;
+  }
+  .nav {
+    position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%);
+    display: flex; align-items: center; gap: 14px;
+    background: rgba(0,20,50,0.85); backdrop-filter: blur(16px);
+    border: 1px solid var(--teal-border); border-radius: 40px;
+    padding: 8px 20px; z-index: 100;
+  }
+  .nav button {
+    background: none; border: none; color: var(--white);
+    font-size: 20px; cursor: pointer; padding: 2px 8px;
+    border-radius: 50%; transition: background 0.18s;
+  }
+  .nav button:hover { background: var(--teal-pale); }
+  .nav button:disabled { opacity: 0.25; cursor: default; }
+  .dots { display: flex; gap: 5px; align-items: center; }
+  .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(255,255,255,0.22); transition: all 0.22s; cursor: pointer;
+  }
+  .dot.active { background: var(--teal-light); width: 18px; border-radius: 3px; }
+  #counter { color: var(--muted); font-size: 12px; min-width: 44px; text-align: center; }
+
+  /* backgrounds */
+  .bg-1 { background: radial-gradient(ellipse at 60% 40%, #00326E 0%, #001228 100%); }
+  .bg-2 { background: radial-gradient(ellipse at 30% 60%, #001E42 0%, #000D1C 100%); }
+  .bg-3 { background: radial-gradient(ellipse at 50% 50%, #001E42 0%, #000D1C 100%); }
+  .bg-4 { background: radial-gradient(ellipse at 70% 30%, #003060 0%, #001228 100%); }
+  .bg-5 { background: radial-gradient(ellipse at 40% 60%, #00262E 0%, #000E12 100%); }
+  .bg-6 { background: radial-gradient(ellipse at 60% 40%, #001428 0%, #001E42 100%); }
+  .bg-7 { background: radial-gradient(ellipse at 35% 55%, #001428 0%, #00262E 100%); }
+  .bg-8 { background: radial-gradient(ellipse at 55% 45%, #00326E 0%, #001228 100%); }
+  .bg-9  { background: radial-gradient(ellipse at 50% 40%, #003040 0%, #001020 100%); }
+  .bg-10 { background: radial-gradient(ellipse at 45% 55%, #001E42 0%, #00326E 80%, #001020 100%); }
+
+  /* rule */
+  .rule {
+    width: 56px; height: 3px;
+    background: linear-gradient(90deg, var(--navy), var(--teal-light));
+    border-radius: 2px; margin: 14px auto;
+  }
+
+  /* type */
+  .eyebrow {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--teal-light); margin-bottom: 10px;
+  }
+  h2 { font-size: clamp(20px,2.8vw,36px); font-weight: 700; line-height: 1.15; margin: 0 0 8px; }
+  h3 { font-size: clamp(13px,1.5vw,17px); font-weight: 600; }
+  p  { font-size: clamp(12px,1.3vw,15px); color: var(--muted); line-height: 1.65; }
+  .accent { color: var(--teal-light); }
+  .gold   { color: var(--gold); }
+  .green  { color: #6EE7A7; }
+
+  /* pills */
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 16px; border-radius: 20px;
+    font-size: 12px; font-weight: 600; border: 1px solid;
+  }
+  .pill-navy  { background: rgba(0,50,110,0.3);    color: #7BB8FF; border-color: rgba(0,155,167,0.4); }
+  .pill-gold  { background: rgba(245,166,35,0.12); color: #FBBF24; border-color: rgba(245,166,35,0.3); }
+  .pill-green { background: rgba(61,170,110,0.12); color: #6EE7A7; border-color: rgba(61,170,110,0.3); }
+  .pill-teal  { background: rgba(14,188,200,0.12); color: #67E8F9; border-color: rgba(14,188,200,0.3); }
+
+  /* icon boxes */
+  .ic {
+    width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ic-teal { background: rgba(0,155,167,0.15); border: 1px solid var(--teal-border); }
+  .ic-navy { background: rgba(0,50,110,0.3);   border: 1px solid rgba(0,100,180,0.3); }
+  .ic-gold { background: rgba(245,166,35,0.12); border: 1px solid rgba(245,166,35,0.3); }
+  .ic svg  { width: 22px; height: 22px; fill: none; stroke-width: 1.75; }
+  .ic-teal svg { stroke: #67E8F9; }
+  .ic-navy svg { stroke: #7BB8FF; }
+  .ic-gold svg { stroke: #FBBF24; }
+
+  /* large centered icon */
+  .ic-lg {
+    width: 52px; height: 52px; border-radius: 14px; margin: 0 auto 14px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(0,155,167,0.12); border: 1px solid var(--teal-border);
+  }
+  .ic-lg svg { width: 26px; height: 26px; fill: none; stroke: var(--teal-light); stroke-width: 1.75; }
+
+  /* ── SLIDE 1 ── */
+  .hero-kicker {
+    font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--teal-light); margin-bottom: 18px;
+  }
+  .hero-title {
+    font-size: clamp(34px,5vw,66px); font-weight: 900;
+    line-height: 1.05; text-align: center; margin-bottom: 16px;
+  }
+  .hero-sub {
+    font-size: clamp(13px,1.6vw,18px); color: var(--muted);
+    text-align: center; max-width: 640px; margin-bottom: 30px;
+  }
+  .hero-pills { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+
+  /* ── SLIDE 2 ── */
+  .prob-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 16px; max-width: 920px; width: 100%; margin-top: 24px;
+  }
+  .prob-card {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 14px; padding: 24px 20px; text-align: center;
+  }
+  .prob-card h3 { color: var(--white); font-size: 14px; margin-bottom: 8px; }
+  .prob-card p  { font-size: 12px; }
+
+  /* ── SLIDE 3 ── */
+  .flow-wrap {
+    width: 100%; max-width: 1000px; margin-top: 8px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .flow-row-inner { display: flex; align-items: stretch; gap: 8px; }
+  .flow-node {
+    flex: 1; background: var(--panel); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px 12px;
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center; gap: 6px; min-width: 0;
+  }
+  .flow-node.ai-node { border-color: var(--teal-border); background: rgba(0,155,167,0.09); }
+  .flow-node .fn-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--teal-light);
+  }
+  .flow-node h3 { font-size: 12px; color: var(--white); }
+  .flow-node p  { font-size: 10px; }
+  .flow-arr { display: flex; align-items: center; color: var(--teal-border); font-size: 16px; flex-shrink: 0; }
+  .router-node {
+    flex: 1; background: rgba(245,166,35,0.07); border: 1px solid rgba(245,166,35,0.25);
+    border-radius: 12px; padding: 12px 16px;
+    display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px;
+  }
+  .route-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; max-width: 1000px; }
+  .route-branch {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 10px; padding: 10px 14px; display: flex; align-items: flex-start; gap: 10px;
+  }
+  .route-branch h3 { font-size: 11px; color: var(--white); margin-bottom: 3px; }
+  .route-branch p  { font-size: 10px; }
+
+  /* ── SLIDE 4 ── */
+  .map-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 16px; max-width: 920px; width: 100%; margin-top: 22px;
+  }
+  .map-card { border-radius: 14px; padding: 20px; border: 1px solid; }
+  .map-1 { background: rgba(0,50,110,0.2);    border-color: rgba(0,155,167,0.4); }
+  .map-2 { background: rgba(245,166,35,0.08); border-color: rgba(245,166,35,0.28); }
+  .map-3 { background: rgba(26,138,138,0.08); border-color: rgba(26,138,138,0.28); }
+  .map-badge {
+    display: inline-block; padding: 3px 10px; border-radius: 10px;
+    font-size: 9px; font-weight: 800; letter-spacing: 1.2px;
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+  .b1 { background: var(--navy);  color: white; }
+  .b2 { background: #8A6000;      color: white; }
+  .b3 { background: var(--teal);  color: white; }
+  .map-card h3 { font-size: 14px; color: var(--white); margin-bottom: 8px; }
+  .map-card p  { font-size: 12px; }
+  .map-eg {
+    margin-top: 12px; background: rgba(0,0,0,0.3); border-radius: 8px;
+    padding: 10px; font-size: 11px; color: rgba(255,255,255,0.65);
+    font-family: 'Consolas', monospace; line-height: 1.5;
+  }
+
+  /* ── SLIDE 5 ── */
+  .demo-layout {
+    display: grid; grid-template-columns: 1fr 76px 1fr;
+    gap: 14px; max-width: 980px; width: 100%; margin-top: 20px; align-items: center;
+  }
+  .demo-box {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 14px; padding: 18px; height: 100%;
+  }
+  .demo-box.out-box { border-color: rgba(61,170,110,0.25); }
+  .demo-box .dh {
+    font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--muted);
+    margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border);
+  }
+  .frow {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 8px; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .frow:last-child { border-bottom: none; }
+  .flabel { font-size: 10px; color: var(--muted); flex-shrink: 0; min-width: 96px; }
+  .fval   { font-size: 11px; font-weight: 600; text-align: right; color: var(--off-white); }
+  .fval.mapped  { color: #6EE7A7; }
+  .fval.decided { color: #67E8F9; }
+  .mid-col {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 8px; justify-content: center;
+  }
+  .mid-arr { font-size: 20px; color: rgba(255,255,255,0.12); }
+  .ai-pill {
+    background: linear-gradient(135deg, var(--navy-dark), #005A80);
+    border: 1px solid var(--teal-border); border-radius: 20px;
+    padding: 5px 12px; font-size: 9px; font-weight: 800;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: #80DEEA; text-align: center;
+  }
+
+  /* ── SLIDE 6 ── */
+  .why-grid {
+    display: grid; grid-template-columns: repeat(2,1fr);
+    gap: 14px; max-width: 880px; width: 100%; margin-top: 24px;
+  }
+  .why-card {
+    display: flex; gap: 14px; align-items: flex-start;
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px;
+  }
+  .why-card h3 { color: var(--white); font-size: 14px; margin-bottom: 5px; }
+  .why-card p  { font-size: 12px; }
+  .why-stat {
+    display: inline-block; margin-top: 8px;
+    background: rgba(0,50,110,0.3); border: 1px solid rgba(0,155,167,0.3);
+    color: #67E8F9; font-size: 10px; font-weight: 700;
+    padding: 2px 10px; border-radius: 8px;
+  }
+
+  /* ── SLIDE 7 ── */
+  .ben-grid {
+    display: grid; grid-template-columns: repeat(2,1fr);
+    gap: 14px; max-width: 880px; width: 100%; margin-top: 22px;
+  }
+  .ben-card {
+    display: flex; gap: 14px; align-items: flex-start;
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px;
+  }
+  .ben-card h3 { color: var(--white); font-size: 14px; margin-bottom: 5px; }
+  .ben-card p  { font-size: 12px; }
+  .stat {
+    display: inline-block; margin-top: 7px;
+    background: var(--teal-pale); border: 1px solid var(--teal-border);
+    color: #67E8F9; font-size: 10px; font-weight: 700;
+    padding: 3px 10px; border-radius: 10px;
+  }
+
+  /* ── SLIDE 8 ── */
+  .next-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 12px; max-width: 1000px; width: 100%; margin-top: 20px;
+  }
+  .next-card {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 14px; padding: 18px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .next-card.hl { border-color: var(--teal-border); background: rgba(0,155,167,0.06); }
+  .next-card .phase {
+    font-size: 9px; font-weight: 800; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--teal-light);
+  }
+  .next-card h3 { color: var(--white); font-size: 13px; }
+  .next-card p  { font-size: 11px; }
+  .next-tag {
+    display: inline-block; margin-top: 2px;
+    background: var(--teal-pale); border: 1px solid var(--teal-border);
+    color: #67E8F9; font-size: 9px; font-weight: 700;
+    padding: 2px 8px; border-radius: 8px; align-self: flex-start;
+  }
+
+  /* ── SLIDE 9 ── */
+  .demo-stage {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 22px; max-width: 800px; width: 100%; margin-top: 22px;
+  }
+  .demo-flow {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 16px; padding: 24px 32px; width: 100%; justify-content: center;
+  }
+  .demo-step {
+    display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center;
+  }
+  .ds-ic {
+    width: 52px; height: 52px; border-radius: 14px;
+    background: rgba(0,155,167,0.12); border: 1px solid var(--teal-border);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ds-ic svg { width: 26px; height: 26px; fill: none; stroke: var(--teal-light); stroke-width: 1.75; }
+  .demo-step span { font-size: 11px; color: var(--muted); font-weight: 600; }
+  .demo-arr { color: rgba(255,255,255,0.18); font-size: 22px; }
+  .demo-note {
+    background: rgba(0,50,110,0.2); border: 1px solid rgba(0,155,167,0.25);
+    border-radius: 12px; padding: 16px 28px; text-align: center; width: 100%;
+  }
+  .demo-note p { font-size: 14px; color: var(--off-white); }
+
+  /* ── LIVE SCORE WIDGET ── */
+  #sw-wrap {
+    position: fixed; bottom: 90px; right: 24px; z-index: 200;
+    width: 210px;
+    background: rgba(2,14,28,0.93);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0,155,167,0.4);
+    border-radius: 10px; overflow: hidden;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.55);
+  }
+  .sw-head {
+    background: linear-gradient(90deg, rgba(0,50,110,0.9), rgba(0,74,128,0.9));
+    padding: 7px 10px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid rgba(0,155,167,0.25);
+  }
+  .sw-comp { font-size: 8px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: #0EBCC8; }
+  .sw-tog  { background: none; border: none; color: rgba(255,255,255,0.4); cursor: pointer; font-size: 14px; line-height: 1; padding: 0 2px; }
+  .sw-tog:hover { color: white; }
+  #sw-body { padding: 10px; }
+  .sw-teams { display: flex; align-items: center; justify-content: center; margin-bottom: 6px; }
+  .sw-side  { flex: 1; text-align: center; }
+  .sw-abbr  { font-size: 9px; font-weight: 800; letter-spacing: 1px; color: rgba(255,255,255,0.45); text-transform: uppercase; margin-bottom: 1px; }
+  .sw-num   { font-size: 26px; font-weight: 900; color: white; line-height: 1; letter-spacing: -1px; }
+  .sw-num-sm{ font-size: 17px; font-weight: 800; color: white; line-height: 1.3; letter-spacing: 0; }
+  .sw-detail{ text-align: center; font-size: 9px; color: rgba(255,255,255,0.3); margin: 0 0 5px; min-height: 12px; }
+  .sw-col   { font-size: 24px; color: rgba(255,255,255,0.15); padding: 0 4px; }
+  .sw-state { text-align: center; margin-bottom: 8px; }
+  .sw-pill  { display: inline-block; padding: 2px 9px; border-radius: 8px; font-size: 9px; font-weight: 800; }
+  .sp-pre   { background: rgba(0,155,167,0.15); color: #67E8F9; border: 1px solid rgba(0,155,167,0.3); }
+  .sp-live  { background: rgba(255,60,60,0.18); color: #FF8080; border: 1px solid rgba(255,60,60,0.35); animation: swpulse 1.5s ease-in-out infinite; }
+  .sp-ht    { background: rgba(245,166,35,0.15); color: #FBBF24; border: 1px solid rgba(245,166,35,0.3); }
+  .sp-ft    { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.12); }
+  @keyframes swpulse { 0%,100%{opacity:1} 50%{opacity:0.45} }
+  .sw-foot  { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 7px; margin-top: 2px; }
+  .sw-upd   { font-size: 8px; color: rgba(255,255,255,0.25); }
+  .sw-lnk   { font-size: 9px; font-weight: 700; color: #67E8F9; text-decoration: none; }
+  .sw-lnk:hover { text-decoration: underline; }
+
+  /* ── SLIDE 10 · TEAMS ── */
+  .teams-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 24px; max-width: 960px; width: 100%; margin-top: 20px; align-items: start;
+  }
+  .teams-mock {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 14px; overflow: hidden;
+  }
+  .tm-head {
+    background: rgba(0,50,110,0.4); padding: 10px 14px;
+    display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .tm-av {
+    width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--navy), var(--teal));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 900; color: white;
+  }
+  .tm-nm { font-size: 12px; font-weight: 700; color: white; }
+  .tm-st { font-size: 9px; color: #6EE7A7; }
+  .tm-badge {
+    margin-left: auto; background: rgba(0,155,167,0.15);
+    border: 1px solid rgba(0,155,167,0.35); color: #67E8F9;
+    padding: 2px 9px; border-radius: 8px; font-size: 9px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .tm-chat { padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+  .tm-row  { display: flex; }
+  .tm-usr  { justify-content: flex-end; }
+  .tm-bot  { justify-content: flex-start; }
+  .tm-bbl  { max-width: 84%; padding: 8px 11px; border-radius: 10px; font-size: 11px; line-height: 1.5; color: rgba(255,255,255,0.82); }
+  .tm-usr-bbl { background: rgba(0,50,110,0.55); border-radius: 10px 10px 2px 10px; }
+  .tm-bot-bbl { background: rgba(255,255,255,0.07); border-radius: 10px 10px 10px 2px; }
+  .tm-file {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: rgba(0,155,167,0.12); border: 1px solid rgba(0,155,167,0.3);
+    padding: 3px 9px; border-radius: 6px; font-size: 10px; color: #67E8F9; font-weight: 600;
+  }
+  .tm-action {
+    display: inline-block; margin-top: 5px;
+    background: rgba(0,155,167,0.2); border: 1px solid rgba(0,155,167,0.35);
+    color: #67E8F9; padding: 2px 8px; border-radius: 6px;
+    font-size: 9px; font-weight: 700;
+  }
+  .tm-points { display: flex; flex-direction: column; gap: 16px; }
+  .tm-pt { display: flex; gap: 12px; align-items: flex-start; }
+  .tm-pt h3 { color: white; font-size: 14px; margin-bottom: 4px; }
+  .tm-pt p  { font-size: 12px; }
+</style>
+</head>
+<body>
+
+<div class="logo-bar">AnglicareSA · IT Transformation</div>
+<div class="slide-num" id="slideNum">1 / 9</div>
+
+<!-- ══ SLIDE 1 – HERO ══ -->
+<div class="slide bg-1 active">
+  <div class="hero-kicker">AnglicareSA · IT Transformation · June 2026</div>
+  <h1 class="hero-title">
+    From PDF to Patient Record<br>
+    <span class="accent">in Seconds.</span>
+  </h1>
+  <div class="rule"></div>
+  <p class="hero-sub">
+    An AI powered pipeline that reads MyAgedCare client snapshots and automatically creates complete, accurate records in AlayaCare. Manual data entry is eliminated entirely.
+  </p>
+  <div class="hero-pills">
+    <span class="pill pill-navy">AI Powered</span>
+    <span class="pill pill-gold">Fully Automated</span>
+    <span class="pill pill-green">Live on UAT</span>
+    <span class="pill pill-teal">AnglicareSA Tenant</span>
+  </div>
+</div>
+
+<!-- ══ SLIDE 2 – PROBLEM ══ -->
+<div class="slide bg-2">
+  <div class="eyebrow">The Challenge</div>
+  <h2>Getting a new client into AlayaCare was<br><span class="accent">slow, manual and error prone.</span></h2>
+  <div class="prob-grid">
+    <div class="prob-card">
+      <div class="ic-lg">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+      </div>
+      <h3>Complex Source Documents</h3>
+      <p>MAC snapshots are dense, multi page PDFs covering client details, care approvals, support networks, assessment history and more, across up to 8 pages per record.</p>
+    </div>
+    <div class="prob-card">
+      <div class="ic-lg">
+        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M8 10h8M8 14h4"/></svg>
+      </div>
+      <h3>Manual Re-entry</h3>
+      <p>Coordinators had to read each field from the PDF and retype it into AlayaCare. Slow, repetitive work with a high risk of transcription errors and no audit trail.</p>
+    </div>
+    <div class="prob-card">
+      <div class="ic-lg">
+        <svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
+      </div>
+      <h3>Data Does Not Map Directly</h3>
+      <p>Many MAC fields need splitting, reformatting or interpretation to match AlayaCare's field types and dropdown constraints. Impossible to automate without AI.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 3 – HOW IT WORKS ══ -->
+<div class="slide bg-3">
+  <div class="eyebrow">The Solution · Airia Pipeline</div>
+  <h2 style="text-align:center">Four steps. No manual work.</h2>
+  <div class="flow-wrap">
+
+    <div class="flow-row-inner">
+      <div class="flow-node">
+        <div class="ic ic-navy" style="width:36px;height:36px;border-radius:8px">
+          <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:none;stroke:#7BB8FF;stroke-width:1.75"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <span class="fn-label">Step 1</span>
+        <h3>Upload</h3>
+        <p>MAC PDF dropped into the Airia chat interface</p>
+      </div>
+      <div class="flow-arr">&#8250;</div>
+      <div class="flow-node ai-node">
+        <div class="ic ic-teal" style="width:36px;height:36px;border-radius:8px">
+          <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:none;stroke:#67E8F9;stroke-width:1.75"><path d="M12 2a4 4 0 014 4c0 1.5-.6 2.8-1.6 3.8L12 12l-2.4-2.2A5.4 5.4 0 018 6a4 4 0 014-4z"/><path d="M8 14s-4 1.5-4 5v1h16v-1c0-3.5-4-5-4-5"/><circle cx="12" cy="8" r="2"/></svg>
+        </div>
+        <span class="fn-label">Step 2 · AI</span>
+        <h3>Extract and Map</h3>
+        <p>AI reads every field, splits combined values, interprets ambiguous data and maps to AlayaCare's structure</p>
+      </div>
+      <div class="flow-arr">&#8250;</div>
+      <div class="flow-node">
+        <div class="ic ic-navy" style="width:36px;height:36px;border-radius:8px">
+          <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:none;stroke:#7BB8FF;stroke-width:1.75"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91"/></svg>
+        </div>
+        <span class="fn-label">Step 3</span>
+        <h3>Client Created</h3>
+        <p>Full client record created automatically in AlayaCare, including linked contacts</p>
+      </div>
+      <div class="flow-arr">&#8250;</div>
+      <div class="flow-node ai-node">
+        <div class="ic ic-teal" style="width:36px;height:36px;border-radius:8px">
+          <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:none;stroke:#67E8F9;stroke-width:1.75"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        </div>
+        <span class="fn-label">Step 4 · AI</span>
+        <h3>Confirmation Report</h3>
+        <p>AI generates a full summary of what was extracted and created, with all IDs clearly displayed</p>
+      </div>
+    </div>
+
+    <div class="flow-row-inner" style="justify-content:center">
+      <div class="router-node" style="max-width:420px">
+        <div class="ic ic-gold" style="width:32px;height:32px;border-radius:8px;margin-bottom:2px">
+          <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:none;stroke:#FBBF24;stroke-width:1.75"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <span class="fn-label" style="color:var(--gold)">Smart routing</span>
+        <h3 style="font-size:12px;color:var(--white)">Between steps 2 and 3, the AI checks whether contacts exist in the record and routes accordingly, creating contact records only where needed</h3>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ SLIDE 4 – MAPPING ══ -->
+<div class="slide bg-4">
+  <div class="eyebrow">Field Intelligence</div>
+  <h2 style="text-align:center">Three types of mapping, all handled by AI</h2>
+  <div class="map-grid">
+    <div class="map-card map-1">
+      <span class="map-badge b1">1 to 1 Direct</span>
+      <h3>Straight Transfer</h3>
+      <p>The AI reads the value and places it exactly where it belongs. No transformation needed. Clean, reliable and instant.</p>
+      <div class="map-eg">MAC: "41662458441"<br>
+AlayaCare Medicare: 41662458441</div>
+    </div>
+    <div class="map-card map-2">
+      <span class="map-badge b2">Delimited</span>
+      <h3>Split and Separate</h3>
+      <p>One MAC field broken into multiple AlayaCare fields. Addresses, phone numbers and combined values are parsed with full context awareness.</p>
+      <div class="map-eg">MAC: "13C DERWENT Ave, MAGILL SA 5072"<br>
+Suite · Street · City · State · Postcode</div>
+    </div>
+    <div class="map-card map-3">
+      <span class="map-badge b3">AI Decision</span>
+      <h3>Intelligent Interpretation</h3>
+      <p>Where AlayaCare requires a specific dropdown value, the AI reads the MAC context and selects the correct option from a defined list.</p>
+      <div class="map-eg">MAC: "PR Public Comm Housing"<br>
+AlayaCare: Private residence, public rental</div>
+    </div>
+  </div>
+  <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+    <span class="pill pill-navy" style="font-size:11px">Household composition · 9 values</span>
+    <span class="pill pill-gold" style="font-size:11px">Accommodation type · 12 values</span>
+    <span class="pill pill-teal" style="font-size:11px">Indigenous status · 5 values</span>
+    <span class="pill pill-green" style="font-size:11px">Veteran status · Yes or No</span>
+  </div>
+</div>
+
+<!-- ══ SLIDE 5 – LIVE EXAMPLE ══ -->
+<div class="slide bg-5">
+  <div class="eyebrow">Live Example · Christopher Povis · AC47957816</div>
+  <h2 style="text-align:center">Raw MAC data to mapped AlayaCare output</h2>
+  <div class="demo-layout">
+
+    <div class="demo-box">
+      <div class="dh">MyAgedCare PDF · Raw Data</div>
+      <div class="frow"><span class="flabel">Full Name</span><span class="fval">Christopher Povis</span></div>
+      <div class="frow"><span class="flabel">DOB</span><span class="fval">18/12/1949</span></div>
+      <div class="frow"><span class="flabel">Aged Care ID</span><span class="fval">AC47957816</span></div>
+      <div class="frow"><span class="flabel">Address</span><span class="fval">13C DERWENT Ave, MAGILL SA 5072</span></div>
+      <div class="frow"><span class="flabel">Phone Home</span><span class="fval">+610883383824</span></div>
+      <div class="frow"><span class="flabel">Preferred Phone</span><span class="fval">Home</span></div>
+      <div class="frow"><span class="flabel">Lives With</span><span class="fval">With friends</span></div>
+      <div class="frow"><span class="flabel">Accommodation</span><span class="fval">PR Public Comm Housing</span></div>
+      <div class="frow"><span class="flabel">Medicare</span><span class="fval">41662458441</span></div>
+      <div class="frow"><span class="flabel">DVA Card</span><span class="fval">not applicable</span></div>
+      <div class="frow"><span class="flabel">Indigenous</span><span class="fval">No, Neither</span></div>
+      <div class="frow"><span class="flabel">Support Contact</span><span class="fval">Kathryn Dubini · +610883383824</span></div>
+    </div>
+
+    <div class="mid-col">
+      <div class="mid-arr">&#8250;</div>
+      <div class="ai-pill">AI<br>PIPELINE</div>
+      <div class="mid-arr">&#8250;</div>
+    </div>
+
+    <div class="demo-box out-box">
+      <div class="dh">AlayaCare · Mapped Output</div>
+      <div class="frow"><span class="flabel">First and Last Name</span><span class="fval mapped">Christopher · Povis</span></div>
+      <div class="frow"><span class="flabel">Birthday</span><span class="fval mapped">1949-12-18</span></div>
+      <div class="frow"><span class="flabel">MAC ID</span><span class="fval mapped">AC47957816</span></div>
+      <div class="frow"><span class="flabel">Address Suite</span><span class="fval mapped">DERWENT Avenue · 13C</span></div>
+      <div class="frow"><span class="flabel">City State Postcode</span><span class="fval mapped">MAGILL · SA · 5072</span></div>
+      <div class="frow"><span class="flabel">Phone Main</span><span class="fval mapped">0883383824</span></div>
+      <div class="frow"><span class="flabel">Preferred Phone</span><span class="fval mapped">Home</span></div>
+      <div class="frow"><span class="flabel">Household Code</span><span class="fval decided">Group (unrelated adults)</span></div>
+      <div class="frow"><span class="flabel">Accommodation</span><span class="fval decided">Private residence, public rental</span></div>
+      <div class="frow"><span class="flabel">Medicare</span><span class="fval mapped">41662458441</span></div>
+      <div class="frow"><span class="flabel">Veteran Status</span><span class="fval decided">No</span></div>
+      <div class="frow"><span class="flabel">Indigenous Status</span><span class="fval decided">No</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 6 – WHY AI ══ -->
+<div class="slide bg-6">
+  <div class="eyebrow">The AI Advantage</div>
+  <h2 style="text-align:center">Why <span class="accent">this could not be done</span> without AI</h2>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="ic ic-teal">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <div>
+        <h3>Every MAC Document Is Different</h3>
+        <p>No two MAC PDFs are formatted identically. Addresses use different notation, fields appear in different orders, and values are expressed differently across documents. AI adapts to each one. A rigid script would break.</p>
+        <span class="why-stat">Handles all MAC formatting variations</span>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="ic ic-teal">
+        <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      </div>
+      <div>
+        <h3>Dropdown Values Require Judgment</h3>
+        <p>AlayaCare's fields often require a specific code from a defined list. The source data rarely matches exactly. AI applies a set of business rules to select the correct value, something that cannot be hardcoded.</p>
+        <span class="why-stat">25+ mapped dropdown fields</span>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="ic ic-teal">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div>
+        <h3>Consistent and Validated Every Time</h3>
+        <p>The AI follows a strict set of extraction rules on every run. Dates are always converted to the correct format, phone numbers are normalised, and required fields are never left blank without a reason.</p>
+        <span class="why-stat">Strict output schema enforced on every record</span>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="ic ic-teal">
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div>
+        <h3>Scales Without Adding Headcount</h3>
+        <p>Whether processing one record or fifty, the pipeline takes the same time and effort per record. No training, no fatigue, no variability. The same quality output every single time.</p>
+        <span class="why-stat">Seconds per record regardless of volume</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 7 – BENEFITS ══ -->
+<div class="slide bg-7">
+  <div class="eyebrow">The Impact</div>
+  <h2 style="text-align:center">Real benefits for <span class="accent">staff</span> and <span class="green">clients</span></h2>
+  <div class="ben-grid">
+    <div class="ben-card">
+      <div class="ic ic-teal">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div>
+        <h3>Seconds, Not Hours</h3>
+        <p>What previously took a coordinator 30 to 60 minutes of careful manual entry now completes in a matter of seconds, every time, with no rework.</p>
+        <span class="stat">~95% time saved per record</span>
+      </div>
+    </div>
+    <div class="ben-card">
+      <div class="ic ic-teal">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+      </div>
+      <div>
+        <h3>Consistent Accuracy</h3>
+        <p>Transcription errors like wrong DOBs, transposed phone numbers and missed fields are eliminated. The AI reads directly from the source document.</p>
+        <span class="stat">Strict output schema enforced</span>
+      </div>
+    </div>
+    <div class="ben-card">
+      <div class="ic ic-teal">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <div>
+        <h3>Staff Time Back</h3>
+        <p>Coordinators are freed from repetitive data entry. They can focus on the complex, human work that genuinely requires their expertise and judgment.</p>
+        <span class="stat">Higher value work enabled</span>
+      </div>
+    </div>
+    <div class="ben-card">
+      <div class="ic ic-teal">
+        <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <div>
+        <h3>Faster Client Onboarding</h3>
+        <p>Clients get into the system and into active care management far sooner. Less administrative delay at a critical transition point in their care journey.</p>
+        <span class="stat">Same day setup possible</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 8 – NEXT STEPS ══ -->
+<div class="slide bg-8">
+  <div class="eyebrow">What's Next</div>
+  <h2 style="text-align:center">Pipeline is live on UAT. <span class="accent">Four enhancements on the roadmap.</span></h2>
+  <div class="next-grid">
+
+    <div class="next-card hl">
+      <div class="ic ic-teal" style="width:36px;height:36px;border-radius:8px">
+        <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:none;stroke:#67E8F9;stroke-width:1.75"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+      </div>
+      <div class="phase">Enhancement 1</div>
+      <h3>Accounting Field Completion</h3>
+      <p>Map the remaining two fields, Home Support classification and Funding Approval Date, into AlayaCare's Support At Home accounting section. The AI already extracts both values. One additional step is required in the pipeline.</p>
+      <span class="next-tag">One additional pipeline step</span>
+    </div>
+
+    <div class="next-card hl">
+      <div class="ic ic-teal" style="width:36px;height:36px;border-radius:8px">
+        <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:none;stroke:#67E8F9;stroke-width:1.75"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="M9 15l3 3 3-3"/></svg>
+      </div>
+      <div class="phase">Enhancement 2</div>
+      <h3>Attach PDF to Client Record</h3>
+      <p>Automatically upload the original MAC PDF into the AlayaCare client documents section, so the source document is always accessible alongside the record for reference and auditing.</p>
+      <span class="next-tag">Document storage integration</span>
+    </div>
+
+    <div class="next-card hl">
+      <div class="ic ic-teal" style="width:36px;height:36px;border-radius:8px">
+        <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:none;stroke:#67E8F9;stroke-width:1.75"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
+      </div>
+      <div class="phase">Enhancement 3</div>
+      <h3>Human in the Loop Approval</h3>
+      <p>Before a record is committed, a coordinator reviews the AI extracted data, corrects any fields, and explicitly approves the import. A human remains accountable for every new client created.</p>
+      <span class="next-tag">Review checkpoint before commit</span>
+    </div>
+
+    <div class="next-card hl">
+      <div class="ic ic-teal" style="width:36px;height:36px;border-radius:8px">
+        <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:none;stroke:#67E8F9;stroke-width:1.75"><path d="M15 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V9l-4-4z"/><polyline points="15 5 15 9 19 9"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
+      </div>
+      <div class="phase">Enhancement 4</div>
+      <h3>Zendesk Ticket Audit Trail</h3>
+      <p>Link the originating Zendesk ticket to each completed import. A full audit trail shows who requested it, which document was used, when it was approved and which AlayaCare record was created.</p>
+      <span class="next-tag">Compliance and accountability</span>
+    </div>
+
+    <div class="next-card hl">
+      <div class="ic ic-teal" style="width:36px;height:36px;border-radius:8px">
+        <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:none;stroke:#67E8F9;stroke-width:1.75"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <div class="phase">Ongoing</div>
+      <h3>Expand Fields as Required</h3>
+      <p>As teams use the pipeline and identify additional fields that would be valuable to populate, the extraction and mapping rules can be updated without rebuilding the pipeline from scratch.</p>
+      <span class="next-tag">Configurable and extendable</span>
+    </div>
+
+    <div class="next-card">
+      <div class="ic ic-navy" style="width:36px;height:36px;border-radius:8px">
+        <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:none;stroke:#7BB8FF;stroke-width:1.75"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <div class="phase">Phase 3 · Go Live</div>
+      <h3>Full Production Deployment</h3>
+      <p>Once enhancements are in place and a pilot is complete, roll out to all teams. MAC to AlayaCare becomes a standard, audited step in the client intake workflow.</p>
+      <span class="next-tag">All teams · Production</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ SLIDE 9 – DEMO ══ -->
+<div class="slide bg-9">
+  <div class="eyebrow">Live Demonstration</div>
+  <h2 style="text-align:center">See it <span class="accent">in action</span></h2>
+  <div class="demo-stage">
+    <div class="demo-flow">
+      <div class="demo-step">
+        <div class="ds-ic">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <span>Upload MAC PDF</span>
+      </div>
+      <div class="demo-arr">&#8250;</div>
+      <div class="demo-step">
+        <div class="ds-ic">
+          <svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 014 4c0 1.5-.6 2.8-1.6 3.8L12 12l-2.4-2.2A5.4 5.4 0 018 6a4 4 0 014-4z"/><path d="M8 14s-4 1.5-4 5v1h16v-1c0-3.5-4-5-4-5"/></svg>
+        </div>
+        <span>AI Extracts Data</span>
+      </div>
+      <div class="demo-arr">&#8250;</div>
+      <div class="demo-step">
+        <div class="ds-ic">
+          <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        </div>
+        <span>Record Created</span>
+      </div>
+      <div class="demo-arr">&#8250;</div>
+      <div class="demo-step">
+        <div class="ds-ic">
+          <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        </div>
+        <span>Confirmation</span>
+      </div>
+    </div>
+    <div class="demo-note">
+      <p>Watch a real MAC PDF become a complete AlayaCare client record, from start to finish, in a matter of seconds.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 10 – TEAMS INTEGRATION ══ -->
+<div class="slide bg-10">
+  <div class="eyebrow">The Bigger Vision · In Development</div>
+  <h2 style="text-align:center">At the fingertips of every coordinator<br><span class="accent">inside Microsoft Teams</span></h2>
+  <div class="teams-layout">
+    <div class="teams-mock">
+      <div class="tm-head">
+        <div class="tm-av">AI</div>
+        <div>
+          <div class="tm-nm">AlayaCare Assistant</div>
+          <div class="tm-st">AnglicareSA · Active</div>
+        </div>
+        <span class="tm-badge">In Development</span>
+      </div>
+      <div class="tm-chat">
+        <div class="tm-row tm-usr">
+          <div class="tm-bbl tm-usr-bbl">I need to onboard a new client. Just received their MAC snapshot.</div>
+        </div>
+        <div class="tm-row tm-bot">
+          <div class="tm-bbl tm-bot-bbl">Send it through and I will take care of the rest. I will extract the details, map the fields, and have the AlayaCare record ready for your review.</div>
+        </div>
+        <div class="tm-row tm-usr">
+          <div class="tm-bbl tm-usr-bbl">
+            <span class="tm-file">&#128196; MAC_Client_Snapshot.pdf</span>
+          </div>
+        </div>
+        <div class="tm-row tm-bot">
+          <div class="tm-bbl tm-bot-bbl">
+            Done. Record created for <strong>Christopher Povis</strong>, AC47957816. All 25 fields mapped and verified. Ready for your approval whenever you are.
+            <br><span class="tm-action">View in AlayaCare</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tm-points">
+      <div class="tm-pt">
+        <div class="ic ic-teal" style="width:38px;height:38px;border-radius:10px">
+          <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:none;stroke:#67E8F9;stroke-width:1.75"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div>
+          <h3>No new tools to learn</h3>
+          <p>Lives inside Microsoft Teams. Coordinators use the same interface they use to talk to their team every day. No extra logins, no new software.</p>
+        </div>
+      </div>
+      <div class="tm-pt">
+        <div class="ic ic-teal" style="width:38px;height:38px;border-radius:10px">
+          <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:none;stroke:#67E8F9;stroke-width:1.75"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div>
+          <h3>Conversational, like a colleague</h3>
+          <p>Ask in plain language. The assistant understands the context, handles the steps, and only escalates when a human decision is genuinely needed.</p>
+        </div>
+      </div>
+      <div class="tm-pt">
+        <div class="ic ic-teal" style="width:38px;height:38px;border-radius:10px">
+          <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:none;stroke:#67E8F9;stroke-width:1.75"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <h3>Secure within AnglicareSA</h3>
+          <p>Runs on AnglicareSA's own Airia tenant. Client data is never sent outside the organisation and always stays within your control.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── LIVE SCORE WIDGET ── -->
+<div id="sw-wrap">
+  <div class="sw-head">
+    <span class="sw-comp">Live Score</span>
+    <button class="sw-tog" id="sw-tog" onclick="swToggle()">&#8722;</button>
+  </div>
+  <div id="sw-body">
+    <div class="sw-teams">
+      <div class="sw-side"><div class="sw-abbr" id="sw-home-name">-</div><div class="sw-num" id="sw-home">-</div></div>
+      <div class="sw-col">:</div>
+      <div class="sw-side"><div class="sw-abbr" id="sw-away-name">-</div><div class="sw-num" id="sw-away">-</div></div>
+    </div>
+    <div class="sw-state">
+      <span class="sw-pill sp-pre" id="sw-pill">Loading...</span>
+      <span id="sw-clock" style="display:none;margin-left:6px;font-size:11px;font-weight:700;color:#FF8080;"></span>
+    </div>
+    <div class="sw-foot">
+      <span class="sw-upd" id="sw-upd">Loading...</span>
+      <a href="https://www.google.com/search?q=fifa+world+cup+2026+live+score" target="_blank" class="sw-lnk">Full Score ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── NAV ── -->
+<div class="nav">
+  <button id="prevBtn" onclick="go(-1)" disabled>&#8592;</button>
+  <div class="dots" id="dots"></div>
+  <span id="counter">1 / 9</span>
+  <button id="nextBtn" onclick="go(1)">&#8594;</button>
+</div>
+
+<script>
+  const total = 10;
+  let cur = 1;
+
+  const dotsEl = document.getElementById('dots');
+  for (let i = 1; i <= total; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 1 ? ' active' : '');
+    d.onclick = () => { cur = i; update(); };
+    dotsEl.appendChild(d);
+  }
+
+  function update() {
+    document.querySelectorAll('.slide').forEach((s, i) =>
+      s.classList.toggle('active', i + 1 === cur));
+    document.querySelectorAll('.dot').forEach((d, i) =>
+      d.classList.toggle('active', i + 1 === cur));
+    document.getElementById('counter').textContent = cur + ' / ' + total;
+    document.getElementById('slideNum').textContent = cur + ' / ' + total;
+    document.getElementById('prevBtn').disabled = cur === 1;
+    document.getElementById('nextBtn').disabled = cur === total;
+  }
+
+  function go(dir) {
+    cur = Math.max(1, Math.min(total, cur + dir));
+    update();
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ') go(1);
+    if (e.key === 'ArrowLeft') go(-1);
+  });
+
+  window.swToggle = function() {
+    const body = document.getElementById('sw-body');
+    const btn  = document.getElementById('sw-tog');
+    const open = body.style.display !== 'none';
+    body.style.display = open ? 'none' : 'block';
+    btn.textContent    = open ? '+' : '−';
+  };
+
+  // Live Score — specific ESPN game 760471
+  (function() {
+    const SUMMARY = 'https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=760471';
+    const PROXIES = [
+      u => 'https://corsproxy.io/?' + encodeURIComponent(u),
+      u => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u),
+    ];
+
+    function t() { const d = new Date(); return [d.getHours(),d.getMinutes(),d.getSeconds()].map(n=>String(n).padStart(2,'0')).join(':'); }
+
+    async function tryFetch(url) {
+      try { const r = await fetch(url, { cache: 'no-store' }); return r.ok ? r.json() : null; }
+      catch { return null; }
+    }
+
+    function applyData(data) {
+      // summary endpoint: data.header.competitions[0]
+      const comp = data?.header?.competitions?.[0] || data?.competitions?.[0];
+      if (!comp) return false;
+      const [home, away] = comp.competitors || [];
+      if (!home || !away) return false;
+      document.getElementById('sw-home-name').textContent = home?.team?.abbreviation || home?.team?.shortDisplayName || '?';
+      document.getElementById('sw-away-name').textContent = away?.team?.abbreviation || away?.team?.shortDisplayName || '?';
+      document.getElementById('sw-home').textContent = home?.score ?? '-';
+      document.getElementById('sw-away').textContent = away?.score ?? '-';
+      const pill  = document.getElementById('sw-pill');
+      const clock = document.getElementById('sw-clock');
+      const type  = comp.status?.type?.name || '';
+      const state = comp.status?.type?.state || '';
+      const desc  = (comp.status?.type?.description || comp.status?.type?.shortDetail || '').toLowerCase();
+      const mins  = comp.status?.displayClock || '';
+
+      const isLive = state === 'in' || type === 'STATUS_IN_PROGRESS' || desc.includes('progress');
+      const isHT   = type === 'STATUS_HALFTIME' || desc.includes('half time') || desc.includes('halftime');
+      const isFT   = state === 'post' || type === 'STATUS_FINAL' || desc.includes('final') || desc.includes('full time') || desc.includes('ft');
+
+      if (isHT) {
+        pill.className = 'sw-pill sp-ht'; pill.textContent = 'Half Time';
+        clock.style.display = 'none';
+      } else if (isLive) {
+        pill.className = 'sw-pill sp-live'; pill.textContent = 'LIVE';
+        clock.textContent = mins; clock.style.display = mins ? 'inline' : 'none';
+      } else if (isFT) {
+        pill.className = 'sw-pill sp-ft'; pill.textContent = 'Full Time';
+        clock.style.display = 'none';
+      } else {
+        pill.className = 'sw-pill sp-pre'; pill.textContent = 'Pre-Match';
+        clock.style.display = 'none';
+      }
+      return true;
+    }
+
+    async function refresh() {
+      document.getElementById('sw-upd').textContent = 'Updating...';
+      let ok = false;
+      for (const proxy of PROXIES) {
+        const data = await tryFetch(proxy(SUMMARY));
+        if (data) { ok = applyData(data); if (ok) break; }
+      }
+      document.getElementById('sw-upd').textContent = ok ? 'Updated ' + t() : 'No data · ' + t();
+    }
+
+    refresh();
+    setInterval(refresh, 60000);
+  })();
+</script>
+</body>
+</html>
